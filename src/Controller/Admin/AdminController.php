@@ -14,7 +14,7 @@
  */
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+//use App\Controller\AppController;
 
 class AdminController extends AppController
 {
@@ -22,10 +22,4 @@ class AdminController extends AppController
     {
 
     }
-    
-	public function isAuthorized($user)
-	{
-		return parent::isAuthorized($user);
-	}	
-    
 }
