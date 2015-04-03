@@ -134,4 +134,14 @@ class UsersController extends AppController
 	{
 		return $this->redirect($this->Auth->logout());
 	}    
+	
+	public function isAuthorized($user)
+	{
+		// All registered users can add users
+		if ($this->request->action === 'add') {
+			return true;
+		}
+
+		return parent::isAuthorized($user);
+	}	
 }

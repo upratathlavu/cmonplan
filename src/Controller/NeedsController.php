@@ -109,4 +109,15 @@ class NeedsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+	public function isAuthorized($user)
+	{
+		// All registered users can add needs
+		if ($this->request->action === 'add') {
+			return true;
+		}
+
+		return parent::isAuthorized($user);
+	}	
+    
 }
