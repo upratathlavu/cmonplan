@@ -117,6 +117,7 @@ class NeedsController extends AppController
 			return true;
 		}
 
+		echo bla;
 		return parent::isAuthorized($user);
 	}	
     
