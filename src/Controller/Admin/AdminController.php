@@ -23,4 +23,10 @@ class AdminController extends AppController
     {
 
     }
+    
+	public function isAuthorized($user)
+	{
+		return parent::isAuthorized($user);
+	}	
+    
 }
