@@ -113,7 +113,7 @@ class NeedsController extends AppController
 	public function isAuthorized($user)
 	{
 		// All registered users can add needs
-		if ($this->request->action === 'add') {
+		if ($this->request->action === 'add' || $this->request->action === 'index') {
 			return true;
 		}
 
