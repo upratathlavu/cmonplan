@@ -26,6 +26,7 @@ class AdminController extends AppController
     
 	public function isAuthorized($user)
 	{
+		echo bla;
 		return parent::isAuthorized($user);
 	}	
     
