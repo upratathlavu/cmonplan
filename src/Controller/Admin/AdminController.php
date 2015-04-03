@@ -15,6 +15,7 @@
 namespace App\Controller\Admin;
 
 use Cake\Core\Configure;
+use App\Controller\AppController;
 
 class AdminController extends AppController
 {
