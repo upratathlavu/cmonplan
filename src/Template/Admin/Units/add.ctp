@@ -13,7 +13,6 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('abbreviation');
-            echo $this->Form->input('creation_date');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

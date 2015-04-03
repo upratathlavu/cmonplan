@@ -22,7 +22,6 @@
             echo $this->Form->input('username');
             echo $this->Form->input('password');
             echo $this->Form->input('role_id', ['options' => $roles]);
-            echo $this->Form->input('creation_date');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

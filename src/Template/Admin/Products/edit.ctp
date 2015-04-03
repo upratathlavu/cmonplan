@@ -25,7 +25,6 @@
             echo $this->Form->input('description');
             echo $this->Form->input('product_category_id', ['options' => $productCategories]);
             echo $this->Form->input('unit_id', ['options' => $units]);
-            echo $this->Form->input('creation_date');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
