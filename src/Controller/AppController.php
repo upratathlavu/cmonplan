@@ -49,7 +49,11 @@ class AppController extends Controller
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-			'unauthorizedRedirect' => $this->referer()
+			//'unauthorizedRedirect' => $this->referer()
+			'unauthorizedRedirect' => [
+				'controller' => 'Needs',
+				'action' => 'index'
+			]
         ]);
         
         // Allow the display action so our pages controller
