@@ -14,7 +14,6 @@
  */
 namespace App\Controller\Admin;
 
-use Cake\Core\Configure;
 use App\Controller\AppController;
 
 class AdminController extends AppController
@@ -26,7 +25,6 @@ class AdminController extends AppController
     
 	public function isAuthorized($user)
 	{
-		echo bla;
 		return parent::isAuthorized($user);
 	}	
     
