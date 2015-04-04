@@ -50,7 +50,7 @@
     </div>
 </div>
 <div class="related row">
-    <div class="column large-12">
+    <div class="column large-10">
     <h4 class="subheader"><?= __('Related Needs') ?></h4>
     <?php if (!empty($user->needs)): ?>
     <table cellpadding="0" cellspacing="0">
