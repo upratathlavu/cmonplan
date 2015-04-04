@@ -28,7 +28,7 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('description');
-            echo $this->Form->input('product_category_id', ['options' => $productCategories], ['default' => 'food']);
+            echo $this->Form->input('product_category_id', ['options' => $productCategories], ['epmty' => '(choose product category)']);
             echo $this->Form->input('unit_id', ['options' => $units]);
         ?>
     </fieldset>
