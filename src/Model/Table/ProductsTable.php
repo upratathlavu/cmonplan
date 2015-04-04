@@ -49,6 +49,8 @@ class ProductsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name')
             ->allowEmpty('description')
+            ->notEmpty('product_category_id')
+            ->notEmpty('unit_id')
             ->allowEmpty('creation_date');
 
         return $validator;
