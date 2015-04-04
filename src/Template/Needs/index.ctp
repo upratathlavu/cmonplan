@@ -2,6 +2,7 @@
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('New Need'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Admin Mode'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'list']) ?></li>                 
         <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
     </ul>
 </div>
