@@ -62,6 +62,7 @@ class NeedsController extends AppController
         $products = $this->Needs->Products->find('list', ['limit' => 200]);
         $this->set(compact('need', 'users', 'products'));
         $this->set('_serialize', ['need']);
+        $this->set('authUser', $this->Auth->user());
     }
 
     /**
