@@ -33,8 +33,8 @@
     <fieldset>
         <legend><?= __('Add Need') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user id)']);
-            echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product id)']);
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user name)']);
+            echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product name)']);
             echo $this->Form->input('quantity');
         ?>
     </fieldset>
