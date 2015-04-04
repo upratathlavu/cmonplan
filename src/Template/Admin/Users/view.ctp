@@ -56,8 +56,8 @@
     <table cellpadding="0" cellspacing="0">
         <tr>
             <th><?= __('Id') ?></th>
-            <th><?= __('User Id') ?></th>
-            <th><?= __('Product Id') ?></th>
+            <th><?= __('Username') ?></th>
+            <th><?= __('Product name') ?></th>
             <th><?= __('Quantity') ?></th>
             <th><?= __('Creation Date') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
@@ -65,8 +65,8 @@
         <?php foreach ($user->needs as $needs): ?>
         <tr>
             <td><?= h($needs->id) ?></td>
-            <td><?= h($needs->user_id) ?></td>
-            <td><?= h($needs->product_id) ?></td>
+            <td><?= h($needs->username) ?></td>
+            <td><?= h($needs->name) ?></td>
             <td><?= h($needs->quantity) ?></td>
             <td><?= h($needs->creation_date) ?></td>
 
