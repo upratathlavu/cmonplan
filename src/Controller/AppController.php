@@ -49,7 +49,7 @@ class AppController extends Controller
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-			'unauthorizedRedirect' => $this->referer()'/needs/'
+			'unauthorizedRedirect' => $this->request->url()
 			//'unauthorizedRedirect' => [
 			//	'controller' => 'Needs',
 			//	'action' => 'index'
