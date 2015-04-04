@@ -9,7 +9,8 @@
     <fieldset>
         <legend><?= __('Add Need') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user id)']);
+            //echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user id)']);
+            echo $this->Form->hidden('user_id', ['value' => $authUser['id']]);
             echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product id)']);
             echo $this->Form->input('quantity');
         ?>
