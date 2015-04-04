@@ -8,7 +8,7 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Needs'), ['action' => 'index']) ?></li>
-		<li><?= $this->Html->link(__('Admin Mode'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'list']) ?></li>                         
+		<li><?= $this->Html->link(__('Admin Mode'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>
         <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
     </ul>
 </div>
