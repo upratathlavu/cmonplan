@@ -12,7 +12,7 @@
         <?php
             echo $this->Form->input('username');
             echo $this->Form->input('password');
-            echo $this->Form->input('role_id', ['user']);
+            echo $this->Form->select('role_id', ['2' => 'user']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
