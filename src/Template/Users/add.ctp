@@ -13,7 +13,7 @@
             echo $this->Form->input('username');
             echo $this->Form->input('password');
             //echo $this->Form->select('role_id', ['2' => 'user']);
-            echo $this->Form->hidden('role_id', ['2' => 'user']);
+            echo $this->Form->hidden('role_id', ['value' => '2']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
