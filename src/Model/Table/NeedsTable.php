@@ -43,6 +43,8 @@ class NeedsTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create')
+            ->notEmpty('user_id')
+            ->notEmpty('product_id')
             ->add('quantity', 'valid', ['rule' => 'numeric'])
             ->requirePresence('quantity', 'create')
             ->notEmpty('quantity')
