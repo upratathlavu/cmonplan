@@ -47,6 +47,7 @@ class UsersTable extends Table
             ->notEmpty('username')
             ->requirePresence('password', 'create')
             ->notEmpty('password')
+            ->notEmpty('role_id')
             ->allowEmpty('creation_date');
 
         return $validator;
