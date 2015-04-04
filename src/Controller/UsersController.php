@@ -23,7 +23,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controler' => 'needs' 'action' => 'index']);
             } else {
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
