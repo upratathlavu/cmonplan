@@ -1,4 +1,4 @@
-<div class="actions columns large-1 medium-3">
+<div class="actions columns large-5 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
 		<hr>
