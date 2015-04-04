@@ -1,6 +1,8 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
+        <li><?= $this->Html->link(__('Edit Product Category'), ['action' => 'edit', $product_category->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Product Category'), ['action' => 'delete', $product_category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product_category->id)]) ?> </li>    
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']) ?> </li>
