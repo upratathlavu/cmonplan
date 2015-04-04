@@ -2,6 +2,7 @@
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('List Needs'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
     </ul>
 </div>
 <div class="needs form large-10 medium-9 columns">
