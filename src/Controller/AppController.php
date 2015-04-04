@@ -49,7 +49,7 @@ class AppController extends Controller
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-			'unauthorizedRedirect' => $this->request->werbroot
+			'unauthorizedRedirect' => $this->request->base
 			//'unauthorizedRedirect' => [
 			//	'controller' => 'Needs',
 			//	'action' => 'index'
