@@ -15,8 +15,8 @@
     <fieldset>
         <legend><?= __('Edit Need') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
-            echo $this->Form->input('product_id', ['options' => $products]);
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user id)']);
+            echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product id)']]);
             echo $this->Form->input('quantity');
         ?>
     </fieldset>
