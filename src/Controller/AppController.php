@@ -49,7 +49,7 @@ class AppController extends Controller
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-			'unauthorizedRedirect' => $this->request->base
+			//'unauthorizedRedirect' => $this->referer()
 			//'unauthorizedRedirect' => [
 			//	'controller' => 'Needs',
 			//	'action' => 'index'
@@ -63,10 +63,20 @@ class AppController extends Controller
 
 	public function isAuthorized($user)
 	{
-		// Admin can access every action
-		if (isset($user['role_id']) && $user['role_id'] === 1) {
-			return true;
-		}
+		//// Admin can access every action
+		//if (isset($user['role_id']) && $user['role_id'] === 1) {
+		//	return true;
+		//}
+
+        // Any registered user can access public functions
+        if (empty($this->request->params['prefix'])) {
+            return true;
+        }
+
+        // Only admins can access admin functions
+        if ($this->request->params['prefix'] === 'admin') {
+            return (bool)($user['role'] === 'admin');
+        }		
 
 		// Default deny
 		return false;
