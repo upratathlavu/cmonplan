@@ -65,8 +65,8 @@
         <?php foreach ($user->needs as $needs): ?>
         <tr>
             <td><?= h($needs->id) ?></td>
-            <td><?= h($needs->username) ?></td>
-            <td><?= h($needs->name) ?></td>
+            <td><?= h($needs->user_id) ?></td>
+            <td><?= h($needs->product_id) ?></td>
             <td><?= h($needs->quantity) ?></td>
             <td><?= h($needs->creation_date) ?></td>
 
