@@ -30,7 +30,7 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('user_id') ?></th>
+            <th><?= $this->Paginator->sort('username') ?></th>
             <th><?= $this->Paginator->sort('product_id') ?></th>
             <th><?= $this->Paginator->sort('quantity') ?></th>
             <th><?= $this->Paginator->sort('creation_date') ?></th>
@@ -42,7 +42,7 @@
         <tr>
             <td><?= $this->Number->format($need->id) ?></td>
             <td>
-                <?= $need->has('user') ? $this->Html->link($need->user->id, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?>
+                <?= $need->has('user') ? $this->Html->link($need->user->username, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?>
             </td>
             <td>
                 <?= $need->has('product') ? $this->Html->link($need->product->name, ['controller' => 'Products', 'action' => 'view', $need->product->id]) : '' ?>
