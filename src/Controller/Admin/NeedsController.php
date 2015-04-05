@@ -87,7 +87,7 @@ class NeedsController extends AppController
         //$users = $this->Needs->Users->find('list', ['limit' => 200]);
         //$products = $this->Needs->Products->find('list', ['limit' => 200]);
         $stmt = $conn->execute('select username from users');
-        $users = $stmt->fetchAll();
+        $users = $stmt->fetch();
         $stmt = $conn->execute('select id, name from products');
         $products = $stmt->fetchAll('assoc');
         //$this->set(compact('need', 'users', 'products'));
