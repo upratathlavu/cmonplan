@@ -93,7 +93,7 @@ class NeedsController extends AppController
         //$this->set(compact('need', 'users', 'products'));
         $users = array();
         foreach($tmpusers as $tmpuser) {
-			$users += array($tmpuser[0] => $tmpuser[1]);
+			$users += array($tmpuser['id'] => $tmpuser['username']);
 		}
         $this->set('users', $users);
         $this->set(compact('need'));
