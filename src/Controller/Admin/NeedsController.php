@@ -86,16 +86,15 @@ class NeedsController extends AppController
         // prerobit
         //$users = $this->Needs->Users->find('list', ['limit' => 200]);
         //$products = $this->Needs->Products->find('list', ['limit' => 200]);
-        $stmt = $conn->execute('select username from users');
+        $stmt = $conn->execute('select id, username from users');
         $tmpusers = $stmt->fetchAll('assoc');
         $stmt = $conn->execute('select id, name from products');
         $tmpproducts = $stmt->fetchAll('assoc');
         //$this->set(compact('need', 'users', 'products'));
-        //foreach($tmpusers as $tmpuser) {
-		//	$user
-		//}
-		$users = array();
-		array_merge($users, $tmpusers[]);
+        $users = array();
+        foreach($tmpusers as $tmpuser) {
+			$users += array($tmpuser[0] => $tmpuser[1]);
+		}
         $this->set('users', $users);
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
