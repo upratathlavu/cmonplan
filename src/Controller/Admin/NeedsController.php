@@ -36,7 +36,7 @@ class NeedsController extends AppController
      */
     public function view($id = null)
     {
-		// prerobit
+		// orig
         //$need = $this->Needs->get($id, [
         //    'contain' => ['Users', 'Products']
         //]);
@@ -52,7 +52,6 @@ class NeedsController extends AppController
 			[$id], ['integer']);
         $stmt->execute();
         $need = $stmt->fetch('assoc');
-
         $this->set('need', $need);
     }
 
@@ -67,6 +66,7 @@ class NeedsController extends AppController
         if ($this->request->is('post')) {
 			// prerobit?
             $need = $this->Needs->patchEntity($need, $this->request->data);
+            echo $need;
             // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
