@@ -66,7 +66,7 @@ class NeedsController extends AppController
         $need = $this->Needs->newEntity();
         if ($this->request->is('post')) {
 			// prerobit?
-            //$need = $this->Needs->patchEntity($need, $this->request->data);
+            $need = $this->Needs->patchEntity($need, $this->request->data);
             $this->log($need['user_id'], 'debug');
             $this->log($need['product_id'], 'debug');
             $this->log($need['quantity'], 'debug');
