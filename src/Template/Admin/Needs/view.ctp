@@ -33,23 +33,23 @@
 
 <div class="needs view large-10 medium-9 columns">
     <!--<h2><?//= h($need->id) ?></h2>-->
-    <h2><?= h($need['n.id']) ?></h2>
+    <h2><?= h($need['n_id']) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('User') ?></h6>
             <!--<p><?//= $need->has('user') ? $this->Html->link($need->user->username, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?></p>-->
-            <p><?= $this->Html->link($need['u.username'], ['controller' => 'Users', 'action' => 'view', $need['u.id']]) ?></p>
+            <p><?= $this->Html->link($need['u_username'], ['controller' => 'Users', 'action' => 'view', $need['u_id']]) ?></p>
             <h6 class="subheader"><?= __('Product') ?></h6>
             <!--<p><?//= $need->has('product') ? $this->Html->link($need->product->name, ['controller' => 'Products', 'action' => 'view', $need->product->id]) : '' ?></p>-->
-            <p><?= $this->Html->link($need['p.name'], ['controller' => 'Products', 'action' => 'view', $need['p.id']]) ?></p>
+            <p><?= $this->Html->link($need['p_name'], ['controller' => 'Products', 'action' => 'view', $need['p_id']]) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
             <!--<p><?//= $this->Number->format($need->id) ?></p>->>
-            <p><?= $this->Number->format($need['n.id']) ?></p>
+            <p><?= $this->Number->format($need['n_id']) ?></p>
             <h6 class="subheader"><?= __('Quantity') ?></h6>
             <!--<p><?//= $this->Number->format($need->quantity) ?></p>-->
-            <p><?= $this->Number->format($need['n.quantity']) ?></p>
+            <p><?= $this->Number->format($need['n_quantity']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
