@@ -84,9 +84,9 @@ class NeedsController extends AppController
             }
         }
         // prerobit
-        $users = $this->Needs->Users->find('list', ['limit' => 200]);
+        //$users = $this->Needs->Users->find('list', ['limit' => 200]);
         $products = $this->Needs->Products->find('list', ['limit' => 200]);
-        //$stmt = $conn->execute('select * from users');
+        $users = $conn->execute('SELECT Users.id AS "Users__id", Users.username AS "Users__username", Users.password AS "Users__password", Users.role_id AS "Users__role_id", Users.creation_date AS "Users__creation_date" FROM users Users LIMIT 200');
         //$users = $stmt->fetchAll('assoc');
         $this->log($users, 'debug');
         //$stmt = $conn->execute('select * from products');
