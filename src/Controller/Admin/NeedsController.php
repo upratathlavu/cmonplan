@@ -50,6 +50,7 @@ class NeedsController extends AppController
         
         //$need = $this->Needs->query('select * from needs as n where id = 1 join users as u on n.user_id = u.id');
         $this->set('user_id', $need['user_id']);
+        $this->set('username', $need['username']);
         //$this->set('product', $need['product']);
         //$this->set('id', $id);
     }
