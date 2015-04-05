@@ -92,9 +92,9 @@ class NeedsController extends AppController
         //$stmt = $conn->execute('select * from products');
         //$products = $stmt->fetchAll('assoc');
         $this->set(compact('need', 'users', 'products'));
-        $this->log($users, 'debug');
-        $this->log($products, 'debug');
         $this->set('_serialize', ['need']);
+        $this->log($users, 'debug');
+        $this->log($products, 'debug');        
     }
 
     /**
