@@ -100,7 +100,7 @@ class NeedsController extends AppController
 			$products += array($tmpproduct['id'] => $tmpproduct['name']);
 		}
         $this->set('users', $users);
-        $this->set('users', $products);
+        $this->set('products', $products);
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
         $this->log($users, 'debug');
