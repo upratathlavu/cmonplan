@@ -72,7 +72,7 @@ class NeedsController extends AppController
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
 			//$stmt->execute(); 
 			$errcode = $stmt->errorCode();
-			$this->log($errcode, 'debug');
+
             // orig
             //if ($this->Needs->save($need)) {
             if ($errcode) {
@@ -83,8 +83,12 @@ class NeedsController extends AppController
             }
         }
         // prerobit
-        $users = $this->Needs->Users->find('list', ['limit' => 200]);
-        $products = $this->Needs->Products->find('list', ['limit' => 200]);
+        //$users = $this->Needs->Users->find('list', ['limit' => 200]);
+        //$products = $this->Needs->Products->find('list', ['limit' => 200]);
+        $stmt = $conn->execute('select * from users');
+        $users = $stmt->fetch();
+        $stmt = $conn->execute('select * from products');
+        $products = $stmt->fetch();
         $this->set(compact('need', 'users', 'products'));
         $this->set('_serialize', ['need']);
     }
