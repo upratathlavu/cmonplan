@@ -45,6 +45,7 @@ class NeedsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $need = $conn->execute('select * from needs where id = ?', [$id], ['integer']);
+        echo $need;
         $this->set('username', $need['username']);
         $this->set('product', $need['product']);
         $this->set('id', $id);
