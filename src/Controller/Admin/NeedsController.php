@@ -139,6 +139,7 @@ class NeedsController extends AppController
             }
         }
         // prerobit
+		$this->set('need_id', $id);
         $users = $this->Needs->Users->find('list', ['limit' => 200]);
         $products = $this->Needs->Products->find('list', ['limit' => 200]);
         $this->set(compact('need', 'users', 'products'));
