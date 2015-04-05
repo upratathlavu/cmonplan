@@ -86,11 +86,11 @@ class NeedsController extends AppController
         // prerobit
         //$users = $this->Needs->Users->find('list', ['limit' => 200]);
         //$products = $this->Needs->Products->find('list', ['limit' => 200]);
+		//$this->set(compact('need', 'users', 'products'));
         $stmt = $conn->execute('select id, username from users');
         $tmpusers = $stmt->fetchAll('assoc');
         $stmt = $conn->execute('select id, name from products');
         $tmpproducts = $stmt->fetchAll('assoc');
-        //$this->set(compact('need', 'users', 'products'));
         $users = array();
         foreach($tmpusers as $tmpuser) {
 			$users += array($tmpuser['id'] => $tmpuser['username']);
@@ -103,8 +103,6 @@ class NeedsController extends AppController
         $this->set('products', $products);
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
-        $this->log($users, 'debug');
-        $this->log($products, 'debug');        
     }
 
     /**
