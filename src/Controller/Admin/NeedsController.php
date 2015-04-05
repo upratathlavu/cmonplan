@@ -131,8 +131,9 @@ class NeedsController extends AppController
         
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
+			$this->log($need, 'debug');
             $need = $this->Needs->patchEntity($need, $this->request->data);
-
+			$this->log($need, 'debug');
 			//$data = $this->request->data;
 			$stmt = $conn->execute(
 			'update needs set (user_id, product_id, quantity) = (?, ?, ?) where id = ?', 
