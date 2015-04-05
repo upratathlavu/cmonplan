@@ -88,8 +88,10 @@ class NeedsController extends AppController
         //$products = $this->Needs->Products->find('list', ['limit' => 200]);
         $stmt = $conn->execute('select id, username from users');
         $users = $stmt->fetchAll('assoc');
+        $this->log($users, 'debug');
         $stmt = $conn->execute('select id, name from products');
         $products = $stmt->fetchAll('assoc');
+        $this->log($products, 'debug');
         $this->set(compact('need', 'users', 'products'));
         $this->set('_serialize', ['need']);
     }
