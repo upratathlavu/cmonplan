@@ -49,7 +49,7 @@
             <p><?= $this->Number->format($need['n.id']) ?></p>
             <h6 class="subheader"><?= __('Quantity') ?></h6>
             <!--<p><?//= $this->Number->format($need->quantity) ?></p>-->
-            <p><?= $this->Number->format($need->['n.quantity']) ?></p>
+            <p><?= $this->Number->format($need['n.quantity']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
