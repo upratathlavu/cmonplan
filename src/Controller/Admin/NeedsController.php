@@ -41,7 +41,7 @@ class NeedsController extends AppController
         
         $need = ['id' => '1', 'user_id' => '1', 'product_id' => '2', 'quantity' => '1', 'creation_date' => '2015-04-04T13:05:37+0000', 'product' => ['id' => '2', 'name' => 'jacket', 'description' => '', 'product_category_id' => '1', 'unit_id' => '11', 'creation_date' => '2015-04-04T12:20:06+0000'], 'user' => ['id' => '1', 'username' => 'rado', 'password' => '$2y$10$g2JGZoRS5o1Sdl6AxdSMYe098IxI4zYaFvp1SiI9N58dOUDcSFxwe', 'role_id' => '1', 'creation_date' => '2015-04-03T22:35:47+0000']];
         
-        echo $need;
+        print_r($need);
         $this->set('need', $need);
         //$this->set('_serialize', ['need']);
         //$this->set('need', { "id": 1, "user_id": 1, "product_id": 2, "quantity": 1, "creation_date": "2015-04-04T13:05:37+0000", "product": { "id": 2, "name": "jacket", "description": "", "product_category_id": 1, "unit_id": 11, "creation_date": "2015-04-04T12:20:06+0000" }, "user": { "id": 1, "username": "rado", "password": "$2y$10$g2JGZoRS5o1Sdl6AxdSMYe098IxI4zYaFvp1SiI9N58dOUDcSFxwe", "role_id": 1, "creation_date": "2015-04-03T22:35:47+0000" } });
