@@ -74,7 +74,7 @@ class NeedsController extends AppController
 			$errcode = $stmt->errorCode();
             // orig
             //if ($this->Needs->save($need)) {
-            if (!$errcode) {
+            if ($errcode) {
                 $this->Flash->success('The need has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
