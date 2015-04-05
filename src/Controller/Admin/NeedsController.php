@@ -70,7 +70,7 @@ class NeedsController extends AppController
 			$stmt = $conn->execute(
 			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
-			$stmt->execute(); 
+			//$stmt->execute(); 
 			$errcode = $stmt->errorCode();
             // orig
             //if ($this->Needs->save($need)) {
