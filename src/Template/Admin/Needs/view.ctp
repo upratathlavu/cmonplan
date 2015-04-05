@@ -47,7 +47,7 @@
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
-            <!--<p><?//= $this->Number->format($need->id) ?></p>->>
+            <!--<p><?//= $this->Number->format($need->id) ?></p>-->
             <p><?= $this->Number->format($need['n_id']) ?></p>
             <h6 class="subheader"><?= __('Quantity') ?></h6>
             <!--<p><?//= $this->Number->format($need->quantity) ?></p>-->
