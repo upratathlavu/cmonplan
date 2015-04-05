@@ -170,12 +170,18 @@ class NeedsController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
-    {
+    {		
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $need = $this->Needs->get($id);
-        // prerobit?
-        if ($this->Needs->delete($need)) {
+        // orig
+        //$need = $this->Needs->get($id);
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from needs where id = ?', $id);
+		$errcode = $stmt->errorCode();        
+        
+        if ($errcode) {
+		// orig
+        //if ($this->Needs->delete($need)) {
             $this->Flash->success('The need has been deleted.');
         } else {
             $this->Flash->error('The need could not be deleted. Please, try again.');
