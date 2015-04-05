@@ -35,8 +35,8 @@
         <?php
 			echo $users;
 			echo $products;
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user name)']);
-            echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product name)']);
+            //echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user name)']);
+            //echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product name)']);
             echo $this->Form->input('quantity');
         ?>
     </fieldset>
