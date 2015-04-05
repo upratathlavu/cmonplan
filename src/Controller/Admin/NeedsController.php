@@ -90,8 +90,8 @@ class NeedsController extends AppController
         $users = $stmt->fetchAll('assoc');
         $stmt = $conn->execute('select id, name from products');
         $products = $stmt->fetchAll('assoc');
-        //$this->set(compact('users'));
-        $this->set('users', compact($users));
+        $this->set(compact('users'));
+        //$this->set('users', compact($users));
         $this->set('products', $products);
         $this->set('need', $need);
         //$this->set(compact('need', 'users', 'products'));
