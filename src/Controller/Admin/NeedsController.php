@@ -44,7 +44,7 @@ class NeedsController extends AppController
         //$this->set('_serialize', ['need']);
         
         $conn = ConnectionManager::get('default');
-        $stmt = $conn->execute('select * from needs where id = ?', [$id], ['integer']);
+        $stmt = $conn->execute('select u.id, u.username from needs as n join users as u on n.user_id = u.id where u.id = ?', [$id], ['integer']);
         $stmt->execute();
         $need = $stmt->fetch('assoc');
         
