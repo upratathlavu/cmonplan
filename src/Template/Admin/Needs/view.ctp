@@ -53,7 +53,8 @@
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
-            <p><?= h($need->creation_date) ?></p>
+            <!--<p><?//= h($need->creation_date) ?></p>-->
+            <p><?= h($need['n_creation_date']) ?></p>
         </div>
     </div>
 </div>
