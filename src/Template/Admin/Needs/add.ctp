@@ -33,9 +33,9 @@
     <fieldset>
         <legend><?= __('Add Need') ?></legend>
         <?php
-			print_r($users);
-			echo '<br>';
-			print_r($products);
+			//print_r($users);
+			//echo '<br>';
+			//print_r($products);
 			echo $this->Form->select('user_id', $users, ['empty' => '(choose user name)']);
             //echo $this->Form->input('user_id', ['options' => $users, 'empty' => '(choose user name)']);
             //echo $this->Form->input('product_id', ['options' => $products, 'empty' => '(choose product name)']);
