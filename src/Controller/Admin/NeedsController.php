@@ -97,7 +97,7 @@ class NeedsController extends AppController
 		}
 		$products = array();
         foreach($tmpproducts as $tmpproduct) {
-			$products += array($tmpproduct['id'] => $tmpproduct['username']);
+			$products += array($tmpproduct['id'] => $tmpproduct['name']);
 		}
         $this->set('users', $users);
         $this->set('users', $products);
