@@ -125,8 +125,8 @@ class NeedsController extends AppController
 
 			$data = $this->request->data;
 			$stmt = $conn->execute(
-			'update needs (user_id, product_id, quantity) = (?, ?, ?)', 
-			[$data['user_id'], $data['product_id'], $data['quantity']], ['integer', 'integer', 'integer']);
+			'update needs set (user_id, product_id, quantity) = (?, ?, ?) where id = ?', 
+			[$data['user_id'], $data['product_id'], $data['quantity'], $id], ['integer', 'integer', 'integer', 'integer']);
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
