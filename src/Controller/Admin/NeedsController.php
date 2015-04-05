@@ -49,7 +49,7 @@ class NeedsController extends AppController
         $need = $stmt->fetch('assoc');
         
         //$need = $this->Needs->query('select * from needs where id = 1');
-        $this->set('username', $need['username']);
+        $this->set('user_id', $need['user_id']);
         //$this->set('product', $need['product']);
         //$this->set('id', $id);
     }
