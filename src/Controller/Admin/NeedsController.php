@@ -63,10 +63,11 @@ class NeedsController extends AppController
      */
     public function add()
     {
+		$conn = ConnectionManager::get('default');
+
         $need = $this->Needs->newEntity();
         if ($this->request->is('post')) {
             $need = $this->Needs->patchEntity($need, $this->request->data);
-			$conn = ConnectionManager::get('default');
 			$stmt = $conn->execute(
 			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
