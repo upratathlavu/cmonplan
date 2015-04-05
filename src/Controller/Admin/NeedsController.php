@@ -67,7 +67,7 @@ class NeedsController extends AppController
         if ($this->request->is('post')) {
 			// prerobit?
             $need = $this->Needs->patchEntity($need, $this->request->data);
-            $this->log($need, 'debug');
+            $this->log($this->request->data, 'debug');
             // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
