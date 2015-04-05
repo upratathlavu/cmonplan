@@ -76,7 +76,7 @@ class NeedsController extends AppController
 			$conn = ConnectionManager::get('default');
 			$stmt = $conn->execute(
 			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
-			[need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
+			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
 			$ret = $stmt->execute();            
 			$this->log($ret, 'debug');
             // prerobit?
