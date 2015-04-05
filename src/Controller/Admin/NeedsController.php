@@ -77,8 +77,11 @@ class NeedsController extends AppController
 			$stmt = $conn->execute(
 			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
-			$ret = $stmt->execute();            
-			$this->log($ret, 'debug');
+			$stmt->execute(); 
+			$errcode = $stmt->errorCode();
+			$errinfo = $stmt->errorInfo();
+			$this->log($errcode, 'debug');
+			$this->log($errinfo, 'debug');
             // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
