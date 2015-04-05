@@ -35,7 +35,7 @@
     <h2><?= h($need->id) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-			<?= echo $need ?>
+			<? echo $need ?>
             <h6 class="subheader"><?= __('User') ?></h6>
             <p><?= $need->has('user') ? $this->Html->link($need->user->username, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Product') ?></h6>
