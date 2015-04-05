@@ -31,6 +31,7 @@ class ProductCategoriesController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $productCategory = $this->ProductCategories->get($id, [
             'contain' => ['Products']
         ]);
@@ -47,7 +48,9 @@ class ProductCategoriesController extends AppController
     {
         $productCategory = $this->ProductCategories->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
+            // prerobit?
             if ($this->ProductCategories->save($productCategory)) {
                 $this->Flash->success('The product category has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -68,11 +71,14 @@ class ProductCategoriesController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $productCategory = $this->ProductCategories->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
+            // prerobit?
             if ($this->ProductCategories->save($productCategory)) {
                 $this->Flash->success('The product category has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -94,7 +100,9 @@ class ProductCategoriesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $productCategory = $this->ProductCategories->get($id);
+        // prerobit?
         if ($this->ProductCategories->delete($productCategory)) {
             $this->Flash->success('The product category has been deleted.');
         } else {

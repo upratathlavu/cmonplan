@@ -34,6 +34,7 @@ class NeedsController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $need = $this->Needs->get($id, [
             'contain' => ['Users', 'Products']
         ]);
@@ -50,7 +51,9 @@ class NeedsController extends AppController
     {
         $need = $this->Needs->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $need = $this->Needs->patchEntity($need, $this->request->data);
+            // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -58,6 +61,7 @@ class NeedsController extends AppController
                 $this->Flash->error('The need could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $users = $this->Needs->Users->find('list', ['limit' => 200]);
         $products = $this->Needs->Products->find('list', ['limit' => 200]);
         $this->set(compact('need', 'users', 'products'));
@@ -73,11 +77,14 @@ class NeedsController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $need = $this->Needs->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $need = $this->Needs->patchEntity($need, $this->request->data);
+            // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -85,6 +92,7 @@ class NeedsController extends AppController
                 $this->Flash->error('The need could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $users = $this->Needs->Users->find('list', ['limit' => 200]);
         $products = $this->Needs->Products->find('list', ['limit' => 200]);
         $this->set(compact('need', 'users', 'products'));
@@ -101,7 +109,9 @@ class NeedsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $need = $this->Needs->get($id);
+        // prerobit?
         if ($this->Needs->delete($need)) {
             $this->Flash->success('The need has been deleted.');
         } else {

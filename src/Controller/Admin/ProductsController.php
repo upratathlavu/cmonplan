@@ -34,6 +34,7 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $product = $this->Products->get($id, [
             'contain' => ['ProductCategories', 'Units', 'Needs']
         ]);
@@ -50,7 +51,9 @@ class ProductsController extends AppController
     {
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $product = $this->Products->patchEntity($product, $this->request->data);
+            // prerobit?
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -58,6 +61,7 @@ class ProductsController extends AppController
                 $this->Flash->error('The product could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
         $units = $this->Products->Units->find('list', ['limit' => 200]);
         $this->set(compact('product', 'productCategories', 'units'));
@@ -73,11 +77,14 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $product = $this->Products->patchEntity($product, $this->request->data);
+            // prerobit?
             if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -85,6 +92,7 @@ class ProductsController extends AppController
                 $this->Flash->error('The product could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
         $units = $this->Products->Units->find('list', ['limit' => 200]);
         $this->set(compact('product', 'productCategories', 'units'));
@@ -101,7 +109,9 @@ class ProductsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $product = $this->Products->get($id);
+        // prerobit
         if ($this->Products->delete($product)) {
             $this->Flash->success('The product has been deleted.');
         } else {

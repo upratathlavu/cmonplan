@@ -36,6 +36,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $user = $this->Users->get($id, [
             'contain' => ['Roles', 'Needs']
         ]);
@@ -52,7 +53,9 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $user = $this->Users->patchEntity($user, $this->request->data);
+            // prerobit?
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -60,6 +63,7 @@ class UsersController extends AppController
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $this->set(compact('user', 'roles'));
         $this->set('_serialize', ['user']);
@@ -74,11 +78,14 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $user = $this->Users->patchEntity($user, $this->request->data);
+            // prerobit?
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -86,6 +93,7 @@ class UsersController extends AppController
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $this->set(compact('user', 'roles'));
         $this->set('_serialize', ['user']);
@@ -101,7 +109,9 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $user = $this->Users->get($id);
+        // prerobit?
         if ($this->Users->delete($user)) {
             $this->Flash->success('The user has been deleted.');
         } else {

@@ -31,6 +31,7 @@ class UnitsController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $unit = $this->Units->get($id, [
             'contain' => ['Products']
         ]);
@@ -47,7 +48,9 @@ class UnitsController extends AppController
     {
         $unit = $this->Units->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $unit = $this->Units->patchEntity($unit, $this->request->data);
+            // prerobit?
             if ($this->Units->save($unit)) {
                 $this->Flash->success('The unit has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -68,11 +71,14 @@ class UnitsController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $unit = $this->Units->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $unit = $this->Units->patchEntity($unit, $this->request->data);
+            // prerobit?
             if ($this->Units->save($unit)) {
                 $this->Flash->success('The unit has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -94,7 +100,9 @@ class UnitsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $unit = $this->Units->get($id);
+        // prerobit?
         if ($this->Units->delete($unit)) {
             $this->Flash->success('The unit has been deleted.');
         } else {

@@ -20,7 +20,9 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $user = $this->Users->patchEntity($user, $this->request->data);
+            // prerobit?
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
                 return $this->redirect(['controller' => 'needs', 'action' => 'index']);
@@ -28,6 +30,7 @@ class UsersController extends AppController
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
         }
+        // prerobit
         $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $this->set(compact('user', 'roles'));
         $this->set('_serialize', ['user']);

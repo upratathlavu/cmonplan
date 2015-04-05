@@ -31,6 +31,7 @@ class RolesController extends AppController
      */
     public function view($id = null)
     {
+		// prerobit
         $role = $this->Roles->get($id, [
             'contain' => ['Users']
         ]);
@@ -47,7 +48,9 @@ class RolesController extends AppController
     {
         $role = $this->Roles->newEntity();
         if ($this->request->is('post')) {
+			// prerobit?
             $role = $this->Roles->patchEntity($role, $this->request->data);
+            // prerobit?
             if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -68,11 +71,14 @@ class RolesController extends AppController
      */
     public function edit($id = null)
     {
+		// prerobit
         $role = $this->Roles->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+			// prerobit?
             $role = $this->Roles->patchEntity($role, $this->request->data);
+            // prerobit?
             if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -94,7 +100,9 @@ class RolesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        // prerobit
         $role = $this->Roles->get($id);
+        // prerobit?
         if ($this->Roles->delete($role)) {
             $this->Flash->success('The role has been deleted.');
         } else {
