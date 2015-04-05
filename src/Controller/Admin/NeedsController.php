@@ -66,15 +66,19 @@ class NeedsController extends AppController
         $need = $this->Needs->newEntity();
         if ($this->request->is('post')) {
 			// prerobit?
-			$this->log($need, 'debug');
-            $need = $this->Needs->patchEntity($need, $this->request->data);
+            //$need = $this->Needs->patchEntity($need, $this->request->data);
             $this->log($need['user_id'], 'debug');
             $this->log($need['product_id'], 'debug');
             $this->log($need['quantity'], 'debug');
             $this->log($need['creation_date'], 'debug');
             $this->log($need['user'], 'debug');
             $this->log($need['product'], 'debug');
-            $this->log($this->request->data, 'debug');
+			$conn = ConnectionManager::get('default');
+			$stmt = $conn->execute(
+			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
+			[need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
+			$ret = $stmt->execute();            
+			$this->log($ret, 'debug');
             // prerobit?
             if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
