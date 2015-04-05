@@ -176,7 +176,7 @@ class NeedsController extends AppController
         //$need = $this->Needs->get($id);
 		$conn = ConnectionManager::get('default');	
 		$stmt = $conn->execute(
-		'delete from needs where id = ?', $id);
+		'delete from needs where id = ?', [$id], ['integer']);
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {
