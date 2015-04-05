@@ -68,6 +68,7 @@ class NeedsController extends AppController
 			// prerobit?
 			$this->log($need, 'debug');
             $need = $this->Needs->patchEntity($need, $this->request->data);
+            $this->log($need['id'], $need['user_id'], 'debug');
             $this->log($this->request->data, 'debug');
             // prerobit?
             if ($this->Needs->save($need)) {
