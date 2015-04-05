@@ -37,10 +37,10 @@
         <div class="large-5 columns strings">
 			<?= $need ?>
             <h6 class="subheader"><?= __('User') ?></h6>
-            <!--<p><?= $need->has('user') ? $this->Html->link($need->user->username, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?></p>-->
+            <p><?//= $need->has('user') ? $this->Html->link($need->user->username, ['controller' => 'Users', 'action' => 'view', $need->user->id]) : '' ?></p>
             <p><?= $this->Html->link($username, ['controller' => 'Users', 'action' => 'view', $userid]) ?></p>
             <h6 class="subheader"><?= __('Product') ?></h6>
-            <!--<p><?//= $need->has('product') ? $this->Html->link($need->product->name, ['controller' => 'Products', 'action' => 'view', $need->product->id]) : '' ?></p>-->
+            <p><?//= $need->has('product') ? $this->Html->link($need->product->name, ['controller' => 'Products', 'action' => 'view', $need->product->id]) : '' ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
