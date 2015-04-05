@@ -44,16 +44,16 @@ class NeedsController extends AppController
         //$this->set('_serialize', ['need']);
         
         $conn = ConnectionManager::get('default');
-        $stmt = $conn->execute('select u.id, u.username from needs as n join users as u on n.user_id = u.id where u.id = ?', [$id], ['integer']);
+        $stmt = $conn->execute(
+			'select n.id, u.username, p.name from needs as n 
+			join users as u on n.user_id = u.id 
+			join products p on n.product_id = p.id 
+			where u.id = ?', 
+			[$id], ['integer']);
         $stmt->execute();
         $need = $stmt->fetch('assoc');
-        
-        //$need = $this->Needs->query('select u.id, u.username from needs as n join users as u on n.user_id = u.id where u.id = 1');
-        //$this->set('user_id', $need['id']);
-        //$this->set('username', $need['username']);
+
         $this->set('need', $need);
-        //$this->set('product', $need['product']);
-        //$this->set('id', $id);
     }
 
     /**
