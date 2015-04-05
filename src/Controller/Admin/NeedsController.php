@@ -94,7 +94,8 @@ class NeedsController extends AppController
         //foreach($tmpusers as $tmpuser) {
 		//	$user
 		//}
-		array_merge($user, $tmpuser);
+		
+		array_merge($users, $tmpusers);
         $this->set('users', $users);
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
