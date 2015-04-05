@@ -119,6 +119,16 @@ class NeedsController extends AppController
         //    'contain' => []
         //]);     
         
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select n.id n_id, n.creation_date n_creation_date, n.quantity n_quantity, u.id u_id, u.username u_username, p.id p_id, p.name p_name from needs as n 
+			join users as u on n.user_id = u.id 
+			join products p on n.product_id = p.id 
+			where u.id = ?', 
+			[$id], ['integer']);
+        $data = $stmt->fetch('assoc');
+        $need = $this->Needs->newEntity($data);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
             //$need = $this->Needs->patchEntity($need, $this->request->data);
