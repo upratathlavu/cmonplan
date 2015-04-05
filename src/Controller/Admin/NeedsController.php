@@ -51,7 +51,7 @@ class NeedsController extends AppController
 			join products p on n.product_id = p.id 
 			where u.id = ?', 
 			[$id], ['integer']);
-        $stmt->execute();
+        //$stmt->execute();
         $need = $stmt->fetch('assoc');
         $this->set('need', $need);
     }
