@@ -45,7 +45,7 @@ class NeedsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select n.id, u.username, p.name from needs as n 
+			'select n.id, n.quantity, u.id, u.username, p.id, p.name from needs as n 
 			join users as u on n.user_id = u.id 
 			join products p on n.product_id = p.id 
 			where u.id = ?', 
