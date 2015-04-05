@@ -95,7 +95,12 @@ class NeedsController extends AppController
         foreach($tmpusers as $tmpuser) {
 			$users += array($tmpuser['id'] => $tmpuser['username']);
 		}
+		$products = array();
+        foreach($tmpproducts as $tmpproduct) {
+			$products += array($tmpproduct['id'] => $tmpproduct['username']);
+		}
         $this->set('users', $users);
+        $this->set('users', $products);
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
         $this->log($users, 'debug');
