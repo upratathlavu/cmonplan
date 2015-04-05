@@ -128,7 +128,8 @@ class NeedsController extends AppController
 			[$id], ['integer']);
         $data = $stmt->fetch('assoc');
         $need = $this->Needs->newEntity($data);
-        
+		$this->log($need, 'debug');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
 			$this->log($need, 'debug');
