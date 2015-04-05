@@ -119,27 +119,27 @@ class NeedsController extends AppController
         //    'contain' => []
         //]);     
         
-        $conn = ConnectionManager::get('default');
-        $stmt = $conn->execute(
-			'select n.creation_date creation_date, n.quantity quantity, u.id user_id, u.username user, p.id product_id, p.name product from needs as n 
-			join users as u on n.user_id = u.id 
-			join products p on n.product_id = p.id 
-			where u.id = ?', 
-			[$id], ['integer']);
-        $data = $stmt->fetch('assoc');
-        $this->log($data, 'debug');
-        $need = $this->Needs->newEntity($data);
-		$this->log($need, 'debug');
+        //$conn = ConnectionManager::get('default');
+        //$stmt = $conn->execute(
+		//	'select n.creation_date creation_date, n.quantity quantity, u.id user_id, u.username user, p.id product_id, p.name product from needs as n 
+		//	join users as u on n.user_id = u.id 
+		//	join products p on n.product_id = p.id 
+		//	where u.id = ?', 
+		//	[$id], ['integer']);
+        //$data = $stmt->fetch('assoc');
+        //$this->log($data, 'debug');
+        //$need = $this->Needs->newEntity($data);
+		//$this->log($need, 'debug');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
-			$this->log($need, 'debug');
-            $need = $this->Needs->patchEntity($need, $this->request->data);
-			$this->log($need, 'debug');
-			//$data = $this->request->data;
+			//$this->log($need, 'debug');
+            //$need = $this->Needs->patchEntity($need, $this->request->data);
+			//$this->log($need, 'debug');
+			$data = $this->request->data;
 			$stmt = $conn->execute(
 			'update needs set user_id = coalesce(?, user_id), product_id = coalesce(?, product_id), quantity = coalesce(?, quantity) where id = ?', 
-			[$need['user_id'], $need['product_id'], $need['quantity'], $id], ['integer', 'integer', 'integer', 'integer']);
+			[$data['user_id'], $data['product_id'], $data['quantity'], $id], ['integer', 'integer', 'integer', 'integer']);
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
