@@ -90,6 +90,9 @@ class NeedsController extends AppController
         $users = $stmt->fetchAll('assoc');
         $stmt = $conn->execute('SELECT Products.id AS "Products__id", Products.name AS "Products__name", Products.description AS "Products__description", Products.product_category_id AS "Products__product_category_id", Products.unit_id AS "Products__unit_id", Products.creation_date AS "Products__creation_date" FROM products Products LIMIT 200');
         $products = $stmt->fetchAll('assoc');
+        $this->set('users', $users);
+        $this->set('products', $products);
+        $this->set('need', $need);
         //$this->set(compact('need', 'users', 'products'));
         //$this->set('_serialize', ['need']);
         $this->log($users, 'debug');
