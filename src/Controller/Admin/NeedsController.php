@@ -41,8 +41,8 @@ class NeedsController extends AppController
         
         $test = array('id' => '1', 'user_id' => '1', 'product_id' => '2', 'quantity' => '1', 'creation_date' => '2015-04-04T13:05:37+0000', 'product' => array('id' => '2', 'name' => 'jacket', 'description' => '', 'product_category_id' => '1', 'unit_id' => '11', 'creation_date' => '2015-04-04T12:20:06+0000'), 'user' => array('id' => '1', 'username' => 'rado', 'password' => '$2y$10$g2JGZoRS5o1Sdl6AxdSMYe098IxI4zYaFvp1SiI9N58dOUDcSFxwe', 'role_id' => '1', 'creation_date' => '2015-04-03T22:35:47+0000'));
         
-        $need->user = 'test';
         $need = serialize($test);
+        $need->user = 'test';
         echo "bla bla". $need;
         $this->set('need', $need);
         echo "bla bla2". $need;
