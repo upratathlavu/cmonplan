@@ -118,24 +118,10 @@ class NeedsController extends AppController
         //$need = $this->Needs->get($id, [
         //    'contain' => []
         //]);     
-        
-        //$conn = ConnectionManager::get('default');
-        //$stmt = $conn->execute(
-		//	'select n.creation_date creation_date, n.quantity quantity, u.id user_id, u.username user, p.id product_id, p.name product from needs as n 
-		//	join users as u on n.user_id = u.id 
-		//	join products p on n.product_id = p.id 
-		//	where u.id = ?', 
-		//	[$id], ['integer']);
-        //$data = $stmt->fetch('assoc');
-        //$this->log($data, 'debug');
-        //$need = $this->Needs->newEntity($data);
-		//$this->log($need, 'debug');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
-			//$this->log($need, 'debug');
             //$need = $this->Needs->patchEntity($need, $this->request->data);
-			//$this->log($need, 'debug');
 			$data = $this->request->data;
 			$stmt = $conn->execute(
 			'update needs set user_id = coalesce(?, user_id), product_id = coalesce(?, product_id), quantity = coalesce(?, quantity) where id = ?', 
@@ -151,11 +137,28 @@ class NeedsController extends AppController
                 $this->Flash->error('The need could not be saved. Please, try again.');
             }
         }
-        // prerobit
+
 		$this->set('need_id', $id);
-        $users = $this->Needs->Users->find('list', ['limit' => 200]);
-        $products = $this->Needs->Products->find('list', ['limit' => 200]);
-        $this->set(compact('need', 'users', 'products'));
+
+        $stmt = $conn->execute('select id, username from users');
+        $tmpusers = $stmt->fetchAll('assoc');
+        $stmt = $conn->execute('select id, name from products');
+        $tmpproducts = $stmt->fetchAll('assoc');
+        $users = array();
+        foreach($tmpusers as $tmpuser) {
+			$users += array($tmpuser['id'] => $tmpuser['username']);
+		}
+		$products = array();
+        foreach($tmpproducts as $tmpproduct) {
+			$products += array($tmpproduct['id'] => $tmpproduct['name']);
+		}
+        $this->set('users', $users);
+        $this->set('products', $products);
+		// orig
+        //$users = $this->Needs->Users->find('list', ['limit' => 200]);
+        //$products = $this->Needs->Products->find('list', ['limit' => 200]);
+        //$this->set(compact('need', 'users', 'products'));
+        $this->set(compact('need'))
         $this->set('_serialize', ['need']);
     }
 
