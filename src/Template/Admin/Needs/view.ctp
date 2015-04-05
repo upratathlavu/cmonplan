@@ -7,7 +7,7 @@
         <!--<li><?//= $this->Html->link(__('Edit Need'), ['action' => 'edit', $need->id]) ?> </li>-->
         <li><?= $this->Html->link(__('Edit Need'), ['action' => 'edit', $need['n_id']) ?> </li>
         <!--<li><?//= $this->Form->postLink(__('Delete Need'), ['action' => 'delete', $need->id], ['confirm' => __('Are you sure you want to delete # {0}?', $need->id)]) ?> </li>-->
-        <li><?= $this->Form->postLink(__('Delete Need'), ['action' => 'delete', $need['id]'], ['confirm' => __('Are you sure you want to delete # {0}?', $need['id'])]) ?> </li>    
+        <li><?= $this->Form->postLink(__('Delete Need'), ['action' => 'delete', $need['id'], ['confirm' => __('Are you sure you want to delete # {0}?', $need['id'])]) ?> </li>    
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
