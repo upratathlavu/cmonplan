@@ -123,7 +123,7 @@ class NeedsController extends AppController
 			// orig
             //$need = $this->Needs->patchEntity($need, $this->request->data);
 
-			$data = $this->request->data->toArray();
+			$data = $this->request->data;
 			$stmt = $conn->execute(
 			'update needs (user_id, product_id, quantity) = (?, ?, ?)', 
 			[$data['user_id'], $data['product_id'], $data['quantity']], ['integer', 'integer', 'integer']);
