@@ -72,6 +72,7 @@ class NeedsController extends AppController
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
 			//$stmt->execute(); 
 			$errcode = $stmt->errorCode();
+			$this->log($errcode, 'debug');
             // orig
             //if ($this->Needs->save($need)) {
             if ($errcode) {
