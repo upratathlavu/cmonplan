@@ -86,10 +86,10 @@ class NeedsController extends AppController
         // prerobit
         //$users = $this->Needs->Users->find('list', ['limit' => 200]);
         //$products = $this->Needs->Products->find('list', ['limit' => 200]);
-        $stmt = $conn->execute('select id, username from users');
+        $stmt = $conn->execute('select * from users');
         $users = $stmt->fetchAll('assoc');
         $this->log($users, 'debug');
-        $stmt = $conn->execute('select id, name from products');
+        $stmt = $conn->execute('select * from products');
         $products = $stmt->fetchAll('assoc');
         $this->log($products, 'debug');
         $this->set(compact('need', 'users', 'products'));
