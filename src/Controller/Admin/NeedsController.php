@@ -112,6 +112,8 @@ class NeedsController extends AppController
      */
     public function edit($id = null)
     {
+		$conn = ConnectionManager::get('default');
+		
 		//// orig
         //$need = $this->Needs->get($id, [
         //    'contain' => []
@@ -120,9 +122,16 @@ class NeedsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
             //$need = $this->Needs->patchEntity($need, $this->request->data);
-            $data = $this->request->data->toArray();
-            // prerobit?
-            if ($this->Needs->save($need)) {
+
+			$data = $this->request->data->toArray();
+			$stmt = $conn->execute(
+			'update needs (user_id, product_id, quantity) = (?, ?, ?)', 
+			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {
+			// orig			
+            //if ($this->Needs->save($need)) {
                 $this->Flash->success('The need has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
