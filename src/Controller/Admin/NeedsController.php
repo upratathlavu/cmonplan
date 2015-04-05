@@ -119,7 +119,7 @@ class NeedsController extends AppController
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
 			'select * from needs
-			where u.id = ?', 
+			where id = ?', 
 			[$id], ['integer']);
         $need = $stmt->fetch('assoc');
         $this->set('need', $need);        
