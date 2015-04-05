@@ -51,7 +51,6 @@ class NeedsController extends AppController
 			join products p on n.product_id = p.id 
 			where u.id = ?', 
 			[$id], ['integer']);
-        //$stmt->execute();
         $need = $stmt->fetch('assoc');
         $this->set('need', $need);
     }
@@ -71,22 +70,17 @@ class NeedsController extends AppController
 			$stmt = $conn->execute(
 			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
-			//$stmt->execute(); 
 			$errcode = $stmt->errorCode();
 
-            // orig
-            //if ($this->Needs->save($need)) {
             if ($errcode) {
+            // orig
+            //if ($this->Needs->save($need)) {				
                 $this->Flash->success('The need has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error('The need could not be saved. Please, try again.');
             }
         }
-        // prerobit
-        //$users = $this->Needs->Users->find('list', ['limit' => 200]);
-        //$products = $this->Needs->Products->find('list', ['limit' => 200]);
-		//$this->set(compact('need', 'users', 'products'));
         $stmt = $conn->execute('select id, username from users');
         $tmpusers = $stmt->fetchAll('assoc');
         $stmt = $conn->execute('select id, name from products');
@@ -101,6 +95,10 @@ class NeedsController extends AppController
 		}
         $this->set('users', $users);
         $this->set('products', $products);
+        // orig
+        //$users = $this->Needs->Users->find('list', ['limit' => 200]);
+        //$products = $this->Needs->Products->find('list', ['limit' => 200]);
+		//$this->set(compact('need', 'users', 'products'));
         $this->set(compact('need'));
         $this->set('_serialize', ['need']);
     }
@@ -114,10 +112,18 @@ class NeedsController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $need = $this->Needs->get($id, [
-            'contain' => []
-        ]);
+		//// prerobit
+        //$need = $this->Needs->get($id, [
+        //    'contain' => []
+        //]);
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select * from needs
+			where u.id = ?', 
+			[$id], ['integer']);
+        $need = $stmt->fetch('assoc');
+        $this->set('need', $need);        
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// prerobit?
             $need = $this->Needs->patchEntity($need, $this->request->data);
