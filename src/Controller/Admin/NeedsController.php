@@ -127,6 +127,7 @@ class NeedsController extends AppController
 			where u.id = ?', 
 			[$id], ['integer']);
         $data = $stmt->fetch('assoc');
+        $this->log($data, 'debug');
         $need = $this->Needs->newEntity($data);
 		$this->log($need, 'debug');
 
