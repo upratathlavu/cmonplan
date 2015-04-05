@@ -92,7 +92,6 @@ class NeedsController extends AppController
         $products = $stmt->fetchAll('assoc');
         $this->set(compact('users'));
         $this->set('users', compact($users));
-        echo '\n';
         $this->set('products', $products);
         $this->set('need', $need);
         //$this->set(compact('need', 'users', 'products'));
