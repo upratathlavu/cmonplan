@@ -31,12 +31,29 @@ class UnitsController extends AppController
      */
     public function view($id = null)
     {
-		// prerobit
-        $unit = $this->Units->get($id, [
-            'contain' => ['Products']
-        ]);
-        $this->set('unit', $unit);
-        $this->set('_serialize', ['unit']);
+		//// orig
+        //$unit = $this->Units->get($id, [
+        //    'contain' => ['Products']
+        //]);
+        //$this->set('unit', $unit);
+        //$this->set('_serialize', ['unit']);
+
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select * from units
+			where id = ?', 
+			[$id], ['integer']);
+        $unit = $stmt->fetch('assoc');
+        $this->set('unit', $unit);        
+        
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select p.id id, p.name name, p.description description, p.product_category_id product_category_id, p.unit_id unit_id, p.creation_date creation_date from products p
+			join units u on p.unit_id = u.id
+			u.id = ?', 
+			[$id], ['integer']);
+        $products = $stmt->fetchAll('assoc');
+        $this->set('products', $products);                
     }
 
     /**

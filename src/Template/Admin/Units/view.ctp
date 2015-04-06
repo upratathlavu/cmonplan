@@ -4,8 +4,10 @@
 		<hr>
         <li><?= $this->Html->link(__('Home'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>               
         <hr>    
-        <li><?= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit->id], ['confirm' => __('Are you sure you want to delete # {0}?', $unit->id)]) ?> </li>
+        <!--<li><?//= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit->id]) ?> </li>-->
+        <li><?= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit['id']]) ?> </li>
+        <!--<li><?//= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit->id], ['confirm' => __('Are you sure you want to delete # {0}?', $unit->id)]) ?> </li>-->
+        <li><?= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $unit['id'])]) ?> </li>
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
@@ -31,28 +33,34 @@
     </ul>
 </div>
 <div class="units view large-10 medium-9 columns">
-    <h2><?= h($unit->name) ?></h2>
+    <!--<h2><?//= h($unit->name) ?></h2>-->
+    <h2><?= h($unit['name']) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Name') ?></h6>
-            <p><?= h($unit->name) ?></p>
+            <!--<p><?//= h($unit->name) ?></p>-->
+            <p><?= h($unit['name']) ?></p>
             <h6 class="subheader"><?= __('Abbreviation') ?></h6>
-            <p><?= h($unit->abbreviation) ?></p>
+            <!--<p><?//= h($unit->abbreviation) ?></p>-->
+            <p><?= h($unit['abbreviation']) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($unit->id) ?></p>
+            <!--<p><?//= $this->Number->format($unit->id) ?></p>-->
+            <p><?= $this->Number->format($unit['id']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
-            <p><?= h($unit->creation_date) ?></p>
+            <!--<p><?//= h($unit->creation_date) ?></p>-->
+            <p><?= h($unit['creation_date']) ?></p>
         </div>
     </div>
 </div>
 <div class="related row">
     <div class="column large-12">
     <h4 class="subheader"><?= __('Related Products') ?></h4>
-    <?php if (!empty($unit->products)): ?>
+    <!--<?php //if (!empty($unit->products)): ?>-->
+    <?php if (!empty($products)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
             <th><?= __('Id') ?></th>
@@ -63,21 +71,30 @@
             <th><?= __('Creation Date') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
-        <?php foreach ($unit->products as $products): ?>
+        <!--<?php //foreach ($unit->products as $products): ?>-->
+        <?php foreach ($products as $product): ?>
         <tr>
-            <td><?= h($products->id) ?></td>
-            <td><?= h($products->name) ?></td>
-            <td><?= h($products->description) ?></td>
-            <td><?= h($products->product_category_id) ?></td>
-            <td><?= h($products->unit_id) ?></td>
-            <td><?= h($products->creation_date) ?></td>
+            <!--<td><?//= h($products->id) ?></td>
+            <td><?//= h($products->name) ?></td>
+            <td><?//= h($products->description) ?></td>
+            <td><?//= h($products->product_category_id) ?></td>
+            <td><?//= h($products->unit_id) ?></td>
+            <td><?//= h($products->creation_date) ?></td>-->
 
+			<td><?= h($product['id']) ?></td>
+            <td><?= h($product['name']) ?></td>
+            <td><?= h($product['description']) ?></td>
+            <td><?= h($product['product_category_id']) ?></td>
+            <td><?= h($product['unit_id']) ?></td>
+            <td><?= h($product['creation_date']) ?></td>
+            
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)]) ?>
+                <!--<?//= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products->id]) ?>-->
+				<?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $product['id']]) ?>
+                <!--<?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products->id]) ?>-->
+                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $product['id']]) ?>
+                <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)]) ?>-->
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $product['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $product['id'])]) ?>
 
             </td>
         </tr>
