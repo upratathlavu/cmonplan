@@ -52,7 +52,7 @@ class ProductCategoriesController extends AppController
 			join product_categories pc on p.product_category_id = pc.id 
 			where pc.id = ?', 
 			[$id], ['integer']);
-        $products = $stmt->fetch('assoc');        
+        $products = $stmt->fetchAll('assoc');        
         $this->set('products', $products);        
     }
 
