@@ -3,8 +3,10 @@
     <ul class="side-nav">
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $role->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $role->id)]
+				//['action' => 'delete', $role->id],
+				['action' => 'delete', $role_id],
+                //['confirm' => __('Are you sure you want to delete # {0}?', $role->id)]
+                ['confirm' => __('Are you sure you want to delete # {0}?', $role_id)]
             )
         ?></li>
 		<hr>
@@ -34,7 +36,8 @@
     </ul>
 </div>
 <div class="roles form large-10 medium-9 columns">
-    <?= $this->Form->create($role); ?>
+    <!--<?//= $this->Form->create($role); ?>-->
+    <?= $this->Form->create(); ?>
     <fieldset>
         <legend><?= __('Edit Role') ?></legend>
         <?php

@@ -113,7 +113,7 @@ class RolesController extends AppController
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
-            // prerobit?
+            // orig
             //if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -121,8 +121,11 @@ class RolesController extends AppController
                 $this->Flash->error('The role could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('role'));
-        $this->set('_serialize', ['role']);
+		$this->set('role_id', $id);        
+        
+        //// orig
+        //$this->set(compact('role'));
+        //$this->set('_serialize', ['role']);
     }
 
     /**
