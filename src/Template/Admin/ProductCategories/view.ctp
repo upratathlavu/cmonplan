@@ -59,7 +59,7 @@
 <div class="related row">
     <div class="column large-9">
     <h4 class="subheader"><?= __('Related Products') ?></h4>
-    <!--<?php// if (!empty($productCategory->products)): ?>->
+    <!--<?php// if (!empty($productCategory->products)): ?>-->
     <?php if (!empty($products)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
