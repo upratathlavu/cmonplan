@@ -63,12 +63,19 @@ class ProductCategoriesController extends AppController
      */
     public function add()
     {
+		$conn = ConnectionManager::get('default');
+
         $productCategory = $this->ProductCategories->newEntity();
         if ($this->request->is('post')) {
-			// prerobit?
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
-            // prerobit?
-            if ($this->ProductCategories->save($productCategory)) {
+			$stmt = $conn->execute(
+			'insert into product_categories (name, description) values (?, ?)', 
+			[$need['name'], $need['description'], ['integer', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
+            // orig
+            //if ($this->ProductCategories->save($productCategory)) {
                 $this->Flash->success('The product category has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
