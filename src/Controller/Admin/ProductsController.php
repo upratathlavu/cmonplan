@@ -116,26 +116,52 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $product = $this->Products->get($id, [
-            'contain' => []
-        ]);
+		$conn = ConnectionManager::get('default');
+		
+		//// orig
+        //$product = $this->Products->get($id, [
+        //    'contain' => []
+        //]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
-			// prerobit?
-            $product = $this->Products->patchEntity($product, $this->request->data);
+			// orig
+            //$product = $this->Products->patchEntity($product, $this->request->data);
+			$data = $this->request->data;
+			$stmt = $conn->execute(
+			'update products set name = coalesce(?, name), description = coalesce(?, description), product_category_id = coalesce(?, product_category_id), unit_id = coalesce(?, unit_id) where id = ?', 
+			[$data['name'], $data['description'], $data['product_category_id'], $data['unit_id'], $id], ['string', 'string', 'integer', 'integer', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
             // prerobit?
-            if ($this->Products->save($product)) {
+            //if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error('The product could not be saved. Please, try again.');
             }
         }
-        // prerobit
-        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
-        $units = $this->Products->Units->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'productCategories', 'units'));
-        $this->set('_serialize', ['product']);
+		$this->set('product_id', $id);
+
+        $stmt = $conn->execute('select id, name from product_categories');
+        $tmpproductCategories = $stmt->fetchAll('assoc');
+        $stmt = $conn->execute('select id, name from units');
+        $tmpunits = $stmt->fetchAll('assoc');
+        $productCategories = array();
+        foreach($tmpproductCategories as $tmpproductCategory) {
+			$productCategories += array($tmpproductCategory['id'] => $tmpproductCategory['name']);
+		}
+		$units = array();
+        foreach($tmpunits as $tmpunit) {
+			$units += array($tmpunit['id'] => $tmpunit['name']);
+		}
+        $this->set('productCategories', $productCategories);
+        $this->set('units', $units);              
+        //// orig
+        //$productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
+        //$units = $this->Products->Units->find('list', ['limit' => 200]);
+        //$this->set(compact('product', 'productCategories', 'units'));
+        //$this->set('_serialize', ['product']);
     }
 
     /**
