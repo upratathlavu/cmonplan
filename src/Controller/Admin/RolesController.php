@@ -75,7 +75,7 @@ class RolesController extends AppController
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
-            // prerobit?
+            // orig
             //if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -96,15 +96,25 @@ class RolesController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $role = $this->Roles->get($id, [
-            'contain' => []
-        ]);
+		$conn = ConnectionManager::get('default');
+		
+		//// orig
+        //$role = $this->Roles->get($id, [
+        //    'contain' => []
+        //]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
-			// prerobit?
-            $role = $this->Roles->patchEntity($role, $this->request->data);
+			// orig
+            //$role = $this->Roles->patchEntity($role, $this->request->data);
+			$data = $this->request->data;
+			$stmt = $conn->execute(
+			'update roles set name = coalesce(?, name), description = coalesce(?, description) where id = ?', 
+			[$data['name'], $data['description'], $id], ['string', 'string', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
             // prerobit?
-            if ($this->Roles->save($role)) {
+            //if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
