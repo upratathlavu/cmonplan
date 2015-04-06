@@ -2,6 +2,8 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\Database\Connection;
 
 /**
  * ProductCategories Controller
@@ -31,12 +33,26 @@ class ProductCategoriesController extends AppController
      */
     public function view($id = null)
     {
-		// prerobit
-        $productCategory = $this->ProductCategories->get($id, [
-            'contain' => ['Products']
-        ]);
-        $this->set('productCategory', $productCategory);
-        $this->set('_serialize', ['productCategory']);
+		// orig
+        //$productCategory = $this->ProductCategories->get($id, [
+        //    'contain' => ['Products']
+        //]);
+        //$this->set('productCategory', $productCategory);
+        //$this->set('_serialize', ['productCategory']);
+        
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select * from product_categories
+			where u.id = ?', 
+			[$id], ['integer']);
+        $productCategory = $stmt->fetch('assoc');
+        $stmt = $conn->execute(
+			'select p.id p_id, p.description p_description, p.product_category_id p_product_category_id, p.unit_id p_udnit_id, p.creation_date p_creation_date from products p 
+			join product_categories pc on p.product_category_id = pc.id 
+			where pc.id = ?', 
+			[$id], ['integer']);
+        $products = $stmt->fetch('assoc');        
+        $this->set('products', $products);        
     }
 
     /**
