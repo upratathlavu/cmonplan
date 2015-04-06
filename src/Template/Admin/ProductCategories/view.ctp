@@ -81,20 +81,20 @@
             <td><?//= h($products->unit_id) ?></td>
             <td><?//= h($products->creation_date) ?></td>-->
             
-            <td><?= h($product['id']) ?></td>
-            <td><?= h($product['name']) ?></td>
-            <td><?= h($product['description']) ?></td>
-            <td><?= h($product['product_category_id']) ?></td>
-            <td><?= h($product['unit_id']) ?></td>
-            <td><?= h($product['creation_date']) ?></td>
+            <td><?= h($product['p_id']) ?></td>
+            <td><?= h($product['p_name']) ?></td>
+            <td><?= h($product['p_description']) ?></td>
+            <td><?= h($product['p_product_category_id']) ?></td>
+            <td><?= h($product['p_unit_id']) ?></td>
+            <td><?= h($product['p_creation_date']) ?></td>
 
             <td class="actions">
                 <!--<?//= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products->id]) ?>-->
-				<?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $product['id']]) ?>
+				<?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $product['p_id']]) ?>
                 <!--<?//= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products->id]) ?>-->
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $product['id']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $product['p_id']]) ?>
                 <!--<?//= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)]) ?>-->
-				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $product['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $product['id'])]) ?>
+				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $product['p_id']], ['confirm' => __('Are you sure you want to delete # {0}?', $product['p_id'])]) ?>
             </td>
         </tr>
 
