@@ -125,6 +125,7 @@ class UnitsController extends AppController
         
 		$this->set('unit_id', $id);
         
+        //// orig
         //$this->set(compact('unit'));
         //$this->set('_serialize', ['unit']);
     }
@@ -139,10 +140,16 @@ class UnitsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $unit = $this->Units->get($id);
-        // prerobit?
-        if ($this->Units->delete($unit)) {
+        // orig
+        //$unit = $this->Units->get($id);
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from units where id = ?', [$id], ['integer']);
+		$errcode = $stmt->errorCode();        
+        
+        if ($errcode) {        
+        // orig
+        //if ($this->Units->delete($unit)) {
             $this->Flash->success('The unit has been deleted.');
         } else {
             $this->Flash->error('The unit could not be deleted. Please, try again.');
