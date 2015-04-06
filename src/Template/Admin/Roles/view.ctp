@@ -59,7 +59,7 @@
 <div class="related row">
     <div class="column large-12">
     <h4 class="subheader"><?= __('Related Users') ?></h4>
-    <!--<?php if (!empty($role->users)): ?>-->
+    <!--<?php // if (!empty($role->users)): ?>-->
     <?php if (!empty($users)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
