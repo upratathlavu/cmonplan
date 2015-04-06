@@ -121,8 +121,10 @@ class ProductCategoriesController extends AppController
                 $this->Flash->error('The product category could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('productCategory'));
-        $this->set('_serialize', ['productCategory']);
+        $this->set('product_category_id', $id);
+        
+        //$this->set(compact('productCategory'));
+        //$this->set('_serialize', ['productCategory']);
     }
 
     /**
