@@ -65,12 +65,19 @@ class UnitsController extends AppController
      */
     public function add()
     {
+		$conn = ConnectionManager::get('default');
+		
         $unit = $this->Units->newEntity();
         if ($this->request->is('post')) {
-			// prerobit?
             $unit = $this->Units->patchEntity($unit, $this->request->data);
-            // prerobit?
-            if ($this->Units->save($unit)) {
+			$stmt = $conn->execute(
+			'insert into units (name, abbreviation) values (?, ?)', 
+			[$unit['name'], $unit['abbreviation']], ['string', 'string');
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {
+            // orig
+            //if ($this->Units->save($unit)) {
                 $this->Flash->success('The unit has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
