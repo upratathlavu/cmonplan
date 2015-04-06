@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\Database\Connection;
-use Cake\Log\Log;
 
 /**
  * ProductCategories Controller
@@ -137,10 +136,16 @@ class ProductCategoriesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $productCategory = $this->ProductCategories->get($id);
-        // prerobit?
-        if ($this->ProductCategories->delete($productCategory)) {
+        // orig
+        //$productCategory = $this->ProductCategories->get($id);
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from product_categories where id = ?', [$id], ['integer']);
+		$errcode = $stmt->errorCode();        
+        
+        if ($errcode) {        
+        // orig
+        //if ($this->ProductCategories->delete($productCategory)) {
             $this->Flash->success('The product category has been deleted.');
         } else {
             $this->Flash->error('The product category could not be deleted. Please, try again.');
