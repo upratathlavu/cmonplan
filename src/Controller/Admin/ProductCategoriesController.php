@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\Database\Connection;
+use Cake\Log\Log;
 
 /**
  * ProductCategories Controller
@@ -68,6 +69,8 @@ class ProductCategoriesController extends AppController
         $productCategory = $this->ProductCategories->newEntity();
         if ($this->request->is('post')) {
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
+            $this->log($productCategory['name'], 'debug');
+            $this->log($productCategory['description'], 'debug');
 			$stmt = $conn->execute(
 			'insert into product_categories (name, description) values (?, ?)', 
 			[$productCategory['name'], $productCategory['description']]);
