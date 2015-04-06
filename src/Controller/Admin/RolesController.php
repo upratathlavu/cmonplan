@@ -50,7 +50,8 @@ class RolesController extends AppController
         $this->set('role', $role); 
 		$stmt = $conn->execute(
 			'select u.id u_id, u.username u_username, u.role_id u_role_id, u.creation_date u_creation_date from users u
-			join roles r on u.role_id = r.id', 
+			join roles r on u.role_id = r.id 
+			where r.id = ?', 
 			[$id], ['integer']);
         $users = $stmt->fetchAll('assoc');        
         $this->set('users', $users); 
