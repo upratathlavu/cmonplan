@@ -46,6 +46,7 @@ class ProductCategoriesController extends AppController
 			where id = ?', 
 			[$id], ['integer']);
         $productCategory = $stmt->fetch('assoc');
+        $this->set('productCategory', $productCategory);  
         $stmt = $conn->execute(
 			'select p.id p_id, p.description p_description, p.product_category_id p_product_category_id, p.unit_id p_udnit_id, p.creation_date p_creation_date from products p 
 			join product_categories pc on p.product_category_id = pc.id 
