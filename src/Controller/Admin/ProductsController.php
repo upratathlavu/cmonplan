@@ -103,8 +103,8 @@ class ProductsController extends AppController
         // orig
         //$productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
         //$units = $this->Products->Units->find('list', ['limit' => 200]);
-        //$this->set(compact('product', 'productCategories', 'units'));
-        //$this->set('_serialize', ['product']);
+        $this->set(compact('product', 'productCategories', 'units'));
+        $this->set('_serialize', ['product']);
     }
 
     /**
