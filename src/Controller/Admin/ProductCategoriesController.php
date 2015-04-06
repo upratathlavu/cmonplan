@@ -70,7 +70,7 @@ class ProductCategoriesController extends AppController
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
 			$stmt = $conn->execute(
 			'insert into product_categories (name, description) values (?, ?)', 
-			[$need['name'], $need['description'], ['integer', 'integer']);
+			[$need['name'], $need['description']], ['integer', 'integer']);
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
