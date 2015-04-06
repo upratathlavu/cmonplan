@@ -43,7 +43,7 @@ class ProductCategoriesController extends AppController
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
 			'select * from product_categories
-			where u.id = ?', 
+			where id = ?', 
 			[$id], ['integer']);
         $productCategory = $stmt->fetch('assoc');
         $stmt = $conn->execute(
