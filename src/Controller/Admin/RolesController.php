@@ -64,12 +64,19 @@ class RolesController extends AppController
      */
     public function add()
     {
+		$conn = ConnectionManager::get('default');
+		
         $role = $this->Roles->newEntity();
         if ($this->request->is('post')) {
-			// prerobit?
             $role = $this->Roles->patchEntity($role, $this->request->data);
+			$stmt = $conn->execute(
+			'insert into roles (name, description) values (?, ?)', 
+			[$role['name'], $role['description']], ['string', 'string']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
             // prerobit?
-            if ($this->Roles->save($role)) {
+            //if ($this->Roles->save($role)) {
                 $this->Flash->success('The role has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
