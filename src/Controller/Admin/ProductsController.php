@@ -133,7 +133,7 @@ class ProductsController extends AppController
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
-            // prerobit?
+            // orig
             //if ($this->Products->save($product)) {
                 $this->Flash->success('The product has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -174,10 +174,16 @@ class ProductsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $product = $this->Products->get($id);
-        // prerobit
-        if ($this->Products->delete($product)) {
+        // orig
+        //$product = $this->Products->get($id);        
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from products where id = ?', [$id], ['integer']);
+		$errcode = $stmt->errorCode();         
+		
+		if ($errcode) {
+        // orig
+        //if ($this->Products->delete($product)) {
             $this->Flash->success('The product has been deleted.');
         } else {
             $this->Flash->error('The product could not be deleted. Please, try again.');
