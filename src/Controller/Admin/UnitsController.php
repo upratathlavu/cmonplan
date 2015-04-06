@@ -72,7 +72,7 @@ class UnitsController extends AppController
             $unit = $this->Units->patchEntity($unit, $this->request->data);
 			$stmt = $conn->execute(
 			'insert into units (name, abbreviation) values (?, ?)', 
-			[$unit['name'], $unit['abbreviation']], ['string', 'string');
+			[$unit['name'], $unit['abbreviation']], ['string', 'string']);
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
