@@ -45,13 +45,19 @@ class ProductsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select p.name p_name, p.description p_description, pc.name pc_name, u.name u_name, p.id p_id, p.creation_date p_creation_date from products p 
+			'select p.name p_name, p.description p_description, pc.name pc_name, u.name u_name, p.id p_id, pc.id pc_id, u.id u_id, p.creation_date p_creation_date from products p 
 			join product_categories pc on p.product_category_id = pc.id 
 			join units u on p.unit_id = u.id 
 			where p.id = ?', 
 			[$id], ['integer']);
         $product = $stmt->fetch('assoc');
         $this->set('product', $product);
+        
+        $stmt = $conn->execute(
+			'select * from needs', 
+			[$id], ['integer']);
+        $needs = $stmt->fetch('assoc');
+        $this->set('needs', $needs);
     }
 
     /**
