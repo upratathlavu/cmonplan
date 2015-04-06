@@ -43,8 +43,8 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('description');
-            echo $this->Form->input('product_category_id', ['options' => $productCategories]);
-            echo $this->Form->input('unit_id', ['options' => $units]);
+            echo $this->Form->input('product_category_id', ['options' => $productCategories, 'empty' => '(choose product category)']);
+            echo $this->Form->input('unit_id', ['options' => $units, 'empty' => '(choose unit)']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
