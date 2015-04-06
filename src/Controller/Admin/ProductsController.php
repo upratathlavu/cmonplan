@@ -73,7 +73,7 @@ class ProductsController extends AppController
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->data);
 			$stmt = $conn->execute(
-			'insert into products (name, description, poduct_category_id, unit_id) values (?, ?, ?, ?)', 
+			'insert into products (name, description, product_category_id, unit_id) values (?, ?, ?, ?)', 
 			[$product['name'], $product['description'], $product['product_category_id'], $product['unit_id']], ['string', 'string', 'integer', 'integer']);
 			$errcode = $stmt->errorCode();
 
