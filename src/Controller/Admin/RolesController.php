@@ -138,10 +138,16 @@ class RolesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $role = $this->Roles->get($id);
-        // prerobit?
-        if ($this->Roles->delete($role)) {
+        // orig
+        //$role = $this->Roles->get($id);
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from roles where id = ?', [$id], ['integer']);
+		$errcode = $stmt->errorCode();        
+        
+        if ($errcode) {        
+        // orig
+        //if ($this->Roles->delete($role)) {
             $this->Flash->success('The role has been deleted.');
         } else {
             $this->Flash->error('The role could not be deleted. Please, try again.');
