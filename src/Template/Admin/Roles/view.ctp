@@ -65,7 +65,6 @@
         <tr>
             <th><?= __('Id') ?></th>
             <th><?= __('Username') ?></th>
-            <th><?= __('Password') ?></th>
             <th><?= __('Role Id') ?></th>
             <th><?= __('Creation Date') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
