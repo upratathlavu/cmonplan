@@ -60,7 +60,7 @@
     <div class="column large-9">
     <h4 class="subheader"><?= __('Related Products') ?></h4>
     <!--<?php// if (!empty($productCategory->products)): ?>
-    <?php if (!empty($productCategory['products'])): ?>
+    <?php if (!empty($products)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
             <th><?= __('Id') ?></th>
@@ -72,7 +72,7 @@
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
         <!--<?php// foreach ($productCategory->products as $products): ?>-->
-        <?php foreach ($productCategory->products as $products): ?>
+        <?php foreach ($products as $product): ?>
         <tr>
             <!--<td><?//= h($products->id) ?></td>
             <td><?//= h($products->name) ?></td>
@@ -81,20 +81,20 @@
             <td><?//= h($products->unit_id) ?></td>
             <td><?//= h($products->creation_date) ?></td>-->
             
-            <td><?= h($products['id']) ?></td>
-            <td><?= h($products['name']) ?></td>
-            <td><?= h($products['description']) ?></td>
-            <td><?= h($products['product_category_id']) ?></td>
-            <td><?= h($products['unit_id']) ?></td>
-            <td><?= h($products['creation_date']) ?></td>
+            <td><?= h($product['id']) ?></td>
+            <td><?= h($product['name']) ?></td>
+            <td><?= h($product['description']) ?></td>
+            <td><?= h($product['product_category_id']) ?></td>
+            <td><?= h($product['unit_id']) ?></td>
+            <td><?= h($product['creation_date']) ?></td>
 
             <td class="actions">
                 <!--<?//= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products->id]) ?>-->
-				<?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products['id']]) ?>
+				<?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $product['id']]) ?>
                 <!--<?//= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products->id]) ?>-->
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products['id']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $product['id']]) ?>
                 <!--<?//= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)]) ?>-->
-				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $products['id'])]) ?>
+				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $product['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $product['id'])]) ?>
             </td>
         </tr>
 
