@@ -4,9 +4,9 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 //['action' => 'delete', $productCategory->id],
-                ['action' => 'delete', $productCategory['id']],
+                ['action' => 'delete', $product_category_id],
                 //['confirm' => __('Are you sure you want to delete # {0}?', $productCategory->id)]
-                ['confirm' => __('Are you sure you want to delete # {0}?', $productCategory['id'])]
+                ['confirm' => __('Are you sure you want to delete # {0}?', $product_category_id)]
             )
         ?></li>
 		<hr>
