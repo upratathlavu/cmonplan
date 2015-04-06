@@ -3,8 +3,10 @@
     <ul class="side-nav">
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $product->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
+                //['action' => 'delete', $product->id],
+                ['action' => 'delete', $product_id],
+                //['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
+                ['confirm' => __('Are you sure you want to delete # {0}?', $product_id)]
             )
         ?></li>
 		<hr>
@@ -34,7 +36,8 @@
     </ul>
 </div>
 <div class="products form large-10 medium-9 columns">
-    <?= $this->Form->create($product); ?>
+    <!--<?= $this->Form->create($product); ?>-->
+    <?= $this->Form->create(); ?>
     <fieldset>
         <legend><?= __('Edit Product') ?></legend>
         <?php
