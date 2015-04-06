@@ -69,8 +69,6 @@ class ProductCategoriesController extends AppController
         $productCategory = $this->ProductCategories->newEntity();
         if ($this->request->is('post')) {
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
-            $this->log($productCategory['name'], 'debug');
-            $this->log($productCategory['description'], 'debug');
 			$stmt = $conn->execute(
 			'insert into product_categories (name, description) values (?, ?)', 
 			[$productCategory['name'], $productCategory['description']]);
@@ -98,15 +96,25 @@ class ProductCategoriesController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $productCategory = $this->ProductCategories->get($id, [
-            'contain' => []
-        ]);
+		$conn = ConnectionManager::get('default');
+		
+		//// orig
+        //$productCategory = $this->ProductCategories->get($id, [
+        //    'contain' => []
+        //]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
-			// prerobit?
-            $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
-            // prerobit?
-            if ($this->ProductCategories->save($productCategory)) {
+			// orig
+            //$productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
+			$data = $this->request->data;
+			$stmt = $conn->execute(
+			'update product_categories set name = coalesce(?, name), description = coalesce(?, description) where id = ?', 
+			[$data['name'], $data['description'], $id], ['string', 'string', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
+            // orig
+            //if ($this->ProductCategories->save($productCategory)) {
                 $this->Flash->success('The product category has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
