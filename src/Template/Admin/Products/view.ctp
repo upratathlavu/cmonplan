@@ -42,7 +42,7 @@
             <p><?= h($product['p_name']) ?></p>
             <h6 class="subheader"><?= __('Description') ?></h6>
             <!--<p><?//= h($product->description) ?></p>-->
-            <p><?= h($product['description']) ?></p>
+            <p><?= h($product['p_description']) ?></p>
             <h6 class="subheader"><?= __('Product Category') ?></h6>
             <!--<p><?//= $product->has('product_category') ? $this->Html->link($product->product_category->name, ['controller' => 'ProductCategories', 'action' => 'view', $product->product_category->id]) : '' ?></p>-->
             <p><?= $this->Html->link($product['pc_name'], ['controller' => 'ProductCategories', 'action' => 'view', $product['pc_id']]) ?></p>
@@ -53,12 +53,12 @@
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
             <!--<p><?//= $this->Number->format($product->id) ?></p>-->
-            <p><?= $this->Number->format($product['id']) ?></p>
+            <p><?= $this->Number->format($product['p_id']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
             <!--<p><?//= h($product->creation_date) ?></p>-->
-            <p><?= h($product['creation_date']) ?></p>
+            <p><?= h($product['p_creation_date']) ?></p>
         </div>
     </div>
 </div>
