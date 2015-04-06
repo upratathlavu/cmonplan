@@ -97,23 +97,36 @@ class UnitsController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $unit = $this->Units->get($id, [
-            'contain' => []
-        ]);
+		$conn = ConnectionManager::get('default');
+		
+		//// orig
+        //$unit = $this->Units->get($id, [
+        //    'contain' => []
+        //]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
-			// prerobit?
-            $unit = $this->Units->patchEntity($unit, $this->request->data);
-            // prerobit?
-            if ($this->Units->save($unit)) {
+			// orig
+            //$unit = $this->Units->patchEntity($unit, $this->request->data);
+			$data = $this->request->data;
+			$stmt = $conn->execute(
+			'update units set name = coalesce(?, name), abbreviation = coalesce(?, abbreviation) where id = ?', 
+			[$data['name'], $data['abbreviation'], $id], ['string', 'string', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {            
+            // orig
+            //if ($this->Units->save($unit)) {
                 $this->Flash->success('The unit has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error('The unit could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('unit'));
-        $this->set('_serialize', ['unit']);
+        
+		$this->set('unit_id', $id);
+        
+        //$this->set(compact('unit'));
+        //$this->set('_serialize', ['unit']);
     }
 
     /**
