@@ -31,12 +31,28 @@ class RolesController extends AppController
      */
     public function view($id = null)
     {
-		// prerobit
-        $role = $this->Roles->get($id, [
-            'contain' => ['Users']
-        ]);
-        $this->set('role', $role);
-        $this->set('_serialize', ['role']);
+		//// orig
+        //$role = $this->Roles->get($id, [
+        //    'contain' => ['Users']
+        //]);
+        //$this->set('role', $role);
+        //$this->set('_serialize', ['role']);
+        
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			' select r.name r_name, r.description r_description, r.id r_id, r.creation_date r_creation_date  from roles r 
+			join users u on r.id = u.role_id
+			where r.id = ?', 
+			[$id], ['integer']);
+        $role = $stmt->fetch('assoc');
+        $this->set('role', $role); 
+		$stmt = $conn->execute(
+			'select u.id u_id, u.description u_description, u.role_id p_role_id, u.creation_date u_creation_date from users u
+			join roles r on u.role_id = r.id 
+			where r.id = ?', 
+			[$id], ['integer']);
+        $users = $stmt->fetch('assoc');        
+        $this->set('users', $users); 
     }
 
     /**
