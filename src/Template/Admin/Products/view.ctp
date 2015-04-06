@@ -65,7 +65,7 @@
 <div class="related row">
     <div class="column large-12">
     <h4 class="subheader"><?= __('Related Needs') ?></h4>
-    <!--<?php if (!empty($product->needs)): ?>-->
+    <!--<?//php if (!empty($product->needs)): ?>-->
     <?php if (!empty($needs)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
@@ -93,11 +93,11 @@
 
             <td class="actions">
                 <!--<?//= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs->id]) ?>-->
-				<?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs['id']]) ?>
+				<?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $need['id']]) ?>
                 <!--<?//= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs->id]) ?>-->
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs['id']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $need['id']]) ?>
                 <!--<?//= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $needs->id)]) ?>-->
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $needs['id'])]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $need['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $need['id'])]) ?>
 
             </td>
         </tr>
