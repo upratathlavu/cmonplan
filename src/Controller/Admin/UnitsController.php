@@ -50,7 +50,7 @@ class UnitsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select p.id id, p.name name, p.description description, p.product_category_id product_category_id, p.unit_id unit_id, p.creation_date creation_date from products p
+			'select p.id id, p.name as name, p.description description, p.product_category_id product_category_id, p.unit_id unit_id, p.creation_date creation_date from products p
 			join units u on p.unit_id = u.id
 			where u.id = ?', 
 			[$id], ['integer']);
