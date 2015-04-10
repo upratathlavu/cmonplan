@@ -26,7 +26,7 @@ class UsersController extends AppController
 			'limit' => 15,
 			'order' => [
 				'Users.id' => 'asc'
-			]        
+			],
             'contain' => ['Roles']
         ];
         $this->set('users', $this->paginate($this->Users));
