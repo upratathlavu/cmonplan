@@ -61,8 +61,8 @@ class UsersController extends AppController
 			join roles as r on u.role_id = r.id
 			where n.id = ?', 
 			[$id], ['integer']);
-        $user = $stmt->fetch('assoc');
-        $this->set('user', $user);               
+        $needs = $stmt->fetch('assoc');
+        $this->set('needs', $needs);               
     }
 
     /**
