@@ -57,10 +57,9 @@ class UsersController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select n.id as u_id, n.user_id as user_id, n.product_id as product_id, n.quantity as quantity, r.id as r_id, r.name as r_name 
+			'select n.id as u_id, n.user_id as user_id, n.product_id as product_id, n.quantity as quantity, n.creation_date as creation_date
 			from needs as n
 			join users as u on n.user_id = u.id
-			join roles as r on u.role_id = r.id
 			where n.id = ?', 
 			[$id], ['integer']);
         $needs = $stmt->fetch('assoc');

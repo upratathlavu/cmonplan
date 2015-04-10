@@ -52,7 +52,7 @@
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
             <!--<p><?//= h($user->creation_date) ?></p>-->
-            <p><?= h($user['creation_date']) ?></p>
+            <p><?= h($user['u_creation_date']) ?></p>
         </div>
     </div>
 </div>
@@ -79,7 +79,7 @@
             <td><?//= h($needs->quantity) ?></td>
             <td><?//= h($needs->creation_date) ?></td>-->
             
-            <td><?= h($need['id']) ?></td>
+            <td><?= h($need['u_id']) ?></td>
             <td><?= h($need['user_id']) ?></td>
             <td><?= h($need['product_id']) ?></td>
             <td><?= h($need['quantity']) ?></td>
