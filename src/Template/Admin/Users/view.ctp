@@ -87,11 +87,11 @@
 
             <td class="actions">
                 <!--<?//= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs->id]) ?>-->
-				<?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs['id']]) ?>
+				<?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $need['u_id']]) ?>
                 <!--<?//= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs->id]) ?>-->
-				<?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs['id']]) ?>
+				<?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $need['u_id']]) ?>
                 <!--<?//= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $needs->id)]) ?>-->
-				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $needs['id'])]) ?>
+				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $need['u_id']], ['confirm' => __('Are you sure you want to delete # {0}?', $need['u_id'])]) ?>
             </td>
         </tr>
 
