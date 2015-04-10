@@ -57,7 +57,7 @@ class ProductsController extends AppController
         $stmt = $conn->execute(
 			'select  n.id as n_id, n.user_id as n_user_id, p.product_id as p_product_id, n.quantity as n_quantity, n.creation_date as n_creation_date
 			from needs as n
-			join products as p
+			join products as p on p.id = n.product_id
 			where p.id = ?', 
 			[$id], ['integer']);
         $needs = $stmt->fetchAll('assoc');
