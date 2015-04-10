@@ -119,20 +119,37 @@ class UsersController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-			// prerobit?
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            // prerobit?
-            if ($this->Users->save($user)) {
+			// orig
+            //$user = $this->Users->patchEntity($user, $this->request->data);
+			$data = $this->request->data;
+			$stmt = $conn->execute(
+			'update users set username = coalesce(?, username), password = coalesce(?, password), role_id = coalesce(?, role_id) where id = ?', 
+			[$data['username'], $data['password'], $data['role_id'], $id], ['string', 'string', 'integer', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {
+			// orig		            
+            //if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
         }
-        // prerobit
-        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'roles'));
-        $this->set('_serialize', ['user']);
+		$this->set('user_id', $id);
+
+        $stmt = $conn->execute('select id, name from roles');
+        $tmproles = $stmt->fetchAll('assoc');
+        $roles = array();
+        foreach($tmproles as $tmprole) {
+			$roles += array($tmproles['id'] => $tmprole['name']);
+		}
+        $this->set('roles', $roles);
+        
+        // role
+        //$roles = $this->Users->Roles->find('list', ['limit' => 200]);
+        //$this->set(compact('user', 'roles'));
+        //$this->set('_serialize', ['user']);
     }
 
     /**
