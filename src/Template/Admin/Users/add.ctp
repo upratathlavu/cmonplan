@@ -34,7 +34,8 @@
         <?php
             echo $this->Form->input('username');
             echo $this->Form->input('password');
-            echo $this->Form->input('role_id', ['options' => $roles, 'empty' => '(choose role)']);
+            //echo $this->Form->input('role_id', ['options' => $roles, 'empty' => '(choose role)']);
+            echo $this->Form->input('role_id', $roles, ['empty' => '(choose role)']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
