@@ -50,7 +50,7 @@ class ProductsController extends AppController
 			join product_categories as pc on p.product_category_id = pc.id 
 			join units as u on p.unit_id = u.id 
 			where p.id = ?
-			order by p.id', 
+			order by p.id asc', 
 			[$id], ['integer']);
         $product = $stmt->fetch('assoc');
         $this->set('product', $product);
