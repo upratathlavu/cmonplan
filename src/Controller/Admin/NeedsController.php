@@ -45,10 +45,11 @@ class NeedsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select n.id n_id, n.creation_date n_creation_date, n.quantity n_quantity, u.id u_id, u.username u_username, p.id p_id, p.name p_name from needs as n 
+			'select n.id n_id, n.creation_date n_creation_date, n.quantity n_quantity, u.id u_id, u.username u_username, p.id p_id, p.name p_name 
+			from needs as n 
 			join users as u on n.user_id = u.id 
 			join products p on n.product_id = p.id 
-			where u.id = ?', 
+			where n.id = ?', 
 			[$id], ['integer']);
         $need = $stmt->fetch('assoc');
         $this->set('need', $need);

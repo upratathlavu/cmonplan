@@ -42,11 +42,13 @@ class ProductCategoriesController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select * from product_categories
+			'select * 
+			from product_categories
 			where id = ?', 
 			[$id], ['integer']);
         $productCategory = $stmt->fetch('assoc');
         $this->set('productCategory', $productCategory);  
+        
         $stmt = $conn->execute(
 			'select p.id p_id, p.name p_name, p.description p_description, p.product_category_id p_product_category_id, p.unit_id p_unit_id, p.creation_date p_creation_date from products p 
 			join product_categories pc on p.product_category_id = pc.id 

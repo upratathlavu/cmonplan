@@ -42,7 +42,8 @@ class UnitsController extends AppController
 
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select * from units
+			'select * 
+			from units
 			where id = ?', 
 			[$id], ['integer']);
         $unit = $stmt->fetch('assoc');
