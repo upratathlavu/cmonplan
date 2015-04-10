@@ -21,6 +21,10 @@ class ProductsController extends AppController
     public function index()
     {
         $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'Products.id' => 'asc'
+			],
             'contain' => ['ProductCategories', 'Units']
         ];
         $this->set('products', $this->paginate($this->Products));
@@ -49,8 +53,7 @@ class ProductsController extends AppController
 			from products as p 
 			join product_categories as pc on p.product_category_id = pc.id 
 			join units as u on p.unit_id = u.id 
-			where p.id = ?
-			order by p.id asc', 
+			where p.id = ?', 
 			[$id], ['integer']);
         $product = $stmt->fetch('assoc');
         $this->set('product', $product);
