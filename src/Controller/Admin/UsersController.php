@@ -115,6 +115,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+		// TODO: VYHODIT ZMENU MENA
 		$conn = ConnectionManager::get('default');
 		
 		// orig
@@ -165,6 +166,7 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+		// TODO: KONTROLA, CI NAN NIE SU NAVIAZANE NEJAKE NEEDS PRED DELETOM
         $this->request->allowMethod(['post', 'delete']);
         // orig
         //$user = $this->Users->get($id);

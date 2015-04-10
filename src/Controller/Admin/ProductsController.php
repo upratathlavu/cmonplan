@@ -45,7 +45,7 @@ class ProductsController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select p.name as p_name, p.description as p_description, pc.name as pc_name, u.name as u_name, p.id as p_id, pc.id as pc_id, u.id as u_id, p.creation_date as p_creation_date 
+			'select p.id as p_id, p.name as p_name, p.description as p_description, pc.name as pc_name, u.name as u_name, pc.id as pc_id, u.id as u_id, p.creation_date as p_creation_date 
 			from products as p 
 			join product_categories as pc on p.product_category_id = pc.id 
 			join units as u on p.unit_id = u.id 
@@ -55,7 +55,7 @@ class ProductsController extends AppController
         $this->set('product', $product);
         
         $stmt = $conn->execute(
-			// PREPISAT S POUZITIM NAME NAMIESTO ID
+			// TODO: PREPISAT S POUZITIM NAME NAMIESTO ID
 			'select n.id as n_id, n.user_id as n_user_id, n.product_id as n_product_id, n.quantity as n_quantity, n.creation_date as n_creation_date
 			from needs as n
 			join products as p on p.id = n.product_id
