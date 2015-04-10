@@ -165,10 +165,16 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        // prerobit
-        $user = $this->Users->get($id);
-        // prerobit?
-        if ($this->Users->delete($user)) {
+        // orig
+        //$user = $this->Users->get($id);
+		$conn = ConnectionManager::get('default');	
+		$stmt = $conn->execute(
+		'delete from users where id = ?', [$id], ['integer']);
+		$errcode = $stmt->errorCode();        
+        
+        if ($errcode) {
+		// orig        
+        //if ($this->Users->delete($user)) {
             $this->Flash->success('The user has been deleted.');
         } else {
             $this->Flash->error('The user could not be deleted. Please, try again.');
