@@ -41,7 +41,7 @@
             <p><?= h($user['username']) ?></p>
             <h6 class="subheader"><?= __('Role') ?></h6>
             <!--<p><?//= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></p>-->
-            <p><?= $this->Html->link($user['r_name'], ['controller' => 'Roles', 'action' => 'view', $user['r_id']]) : '' ?></p>
+            <p><?= $this->Html->link($user['r_name'], ['controller' => 'Roles', 'action' => 'view', $user['r_id']]) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
