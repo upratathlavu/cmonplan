@@ -49,7 +49,8 @@ class ProductsController extends AppController
 			from products as p 
 			join product_categories as pc on p.product_category_id = pc.id 
 			join units as u on p.unit_id = u.id 
-			where p.id = ?', 
+			where p.id = ?
+			order by p.id', 
 			[$id], ['integer']);
         $product = $stmt->fetch('assoc');
         $this->set('product', $product);
@@ -59,8 +60,7 @@ class ProductsController extends AppController
 			'select n.id as n_id, n.user_id as n_user_id, n.product_id as n_product_id, n.quantity as n_quantity, n.creation_date as n_creation_date
 			from needs as n
 			join products as p on p.id = n.product_id
-			where p.id = ?
-			order by n.id desc', 
+			where p.id = ?', 
 			[$id], ['integer']);
         $needs = $stmt->fetchAll('assoc');
         $this->set('needs', $needs);
