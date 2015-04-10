@@ -114,10 +114,13 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-		// prerobit
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
+		$conn = ConnectionManager::get('default');
+		
+		// orig
+        //$user = $this->Users->get($id, [
+        //    'contain' => []
+        //]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
 			// orig
             //$user = $this->Users->patchEntity($user, $this->request->data);
