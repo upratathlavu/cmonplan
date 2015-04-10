@@ -5,9 +5,9 @@
         <li><?= $this->Html->link(__('Home'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>                   
         <hr>
         <!--<li><?//= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>-->
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user['id']]) ?> </li>
+        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user['u_id']]) ?> </li>
         <!--<li><?//= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>-->
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $user['id'])]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user['u_id']], ['confirm' => __('Are you sure you want to delete # {0}?', $user['u_id'])]) ?> </li>
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
@@ -34,6 +34,7 @@
 </div>
 <div class="users view large-10 medium-9 columns">
     <!--<h2><?//= h($user->id) ?></h2>-->
+    <h2><?= h($user['u_id']) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Username') ?></h6>
@@ -45,7 +46,8 @@
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($user['u_id']) ?></p>
+            <!--<p><?= $this->Number->format($user['u_id']) ?></p>-->
+            <p><?= $user['u_id']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>

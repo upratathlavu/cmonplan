@@ -47,8 +47,10 @@ class UsersController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select * from users
-			where id = ?', 
+			'select u.id as u_id, u.username as u_username, u.creation_date as u_creation_date, r.id as r_id, r.name as r_name
+			from users as u
+			join roles as r on u.role_id = r.id
+			where u.id = ?', 
 			[$id], ['integer']);
         $user = $stmt->fetch('assoc');
         $this->set('user', $user);     
