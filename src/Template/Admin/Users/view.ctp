@@ -47,7 +47,7 @@
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
             <!--<p><?= $this->Number->format($user['u_id']) ?></p>-->
-            <p><?= $user['u_id']) ?></p>
+            <p><?= $user['u_id'] ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
