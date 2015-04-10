@@ -55,7 +55,7 @@ class ProductsController extends AppController
         $this->set('product', $product);
         
         $stmt = $conn->execute(
-			'select  n.id as n_id, n.user_id as n_user_id, n_product_id as n_product_id, n.quantity as n_quantity, n.creation_date as n_creation_date
+			'select  n.id as n_id, n.user_id as n_user_id, n.product_id as n_product_id, n.quantity as n_quantity, n.creation_date as n_creation_date
 			from needs as n
 			join products as p on p.id = n.product_id
 			where p.id = ?', 
