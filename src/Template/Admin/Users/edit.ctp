@@ -4,9 +4,9 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 //['action' => 'delete', $user->id],
-                ['action' => 'delete', $user['id']],
+                ['action' => 'delete', $user_id],
                 //['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user['id'])]
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user_id)]
             )
         ?></li>
 		<hr>

@@ -145,7 +145,7 @@ class UsersController extends AppController
         $tmproles = $stmt->fetchAll('assoc');
         $roles = array();
         foreach($tmproles as $tmprole) {
-			$roles += array($tmproles['id'] => $tmprole['name']);
+			$roles += array($tmprole['id'] => $tmprole['name']);
 		}
         $this->set('roles', $roles);
         
