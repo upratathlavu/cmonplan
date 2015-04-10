@@ -39,7 +39,7 @@
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Username') ?></h6>
             <!--<p><?//= h($user->username) ?></p>-->
-            <p><?= h($user['username']) ?></p>
+            <p><?= h($user['u_username']) ?></p>
             <h6 class="subheader"><?= __('Role') ?></h6>
             <!--<p><?//= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></p>-->
             <p><?= $this->Html->link($user['r_name'], ['controller' => 'Roles', 'action' => 'view', $user['r_id']]) ?></p>
@@ -51,14 +51,16 @@
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
-            <p><?= h($user->creation_date) ?></p>
+            <!--<p><?//= h($user->creation_date) ?></p>-->
+            <p><?= h($user['creation_date']) ?></p>
         </div>
     </div>
 </div>
 <div class="related row">
     <div class="column large-9">
     <h4 class="subheader"><?= __('Related Needs') ?></h4>
-    <?php if (!empty($user->needs)): ?>
+    <!--<?php //if (!empty($user->needs)): ?>-->
+    <?php if (!empty($needs)): ?>
     <table cellpadding="0" cellspacing="0">
         <tr>
             <th><?= __('Id') ?></th>
@@ -68,21 +70,28 @@
             <th><?= __('Creation Date') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
-        <?php foreach ($user->needs as $needs): ?>
+        <!--<?php //foreach ($user->needs as $needs): ?>-->
+        <?php foreach ($needs as $need): ?>
         <tr>
-            <td><?= h($needs->id) ?></td>
-            <td><?= h($needs->user_id) ?></td>
-            <td><?= h($needs->product_id) ?></td>
-            <td><?= h($needs->quantity) ?></td>
-            <td><?= h($needs->creation_date) ?></td>
+            <!--<td><?//= h($needs->id) ?></td>
+            <td><?//= h($needs->user_id) ?></td>
+            <td><?//= h($needs->product_id) ?></td>
+            <td><?//= h($needs->quantity) ?></td>
+            <td><?//= h($needs->creation_date) ?></td>-->
+            
+            <td><?= h($need['id']) ?></td>
+            <td><?= h($need['user_id']) ?></td>
+            <td><?= h($need['product_id']) ?></td>
+            <td><?= h($need['quantity']) ?></td>
+            <td><?= h($need['creation_date']) ?></td>
 
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs->id]) ?>
-
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs->id]) ?>
-
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $needs->id)]) ?>
-
+                <!--<?//= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs->id]) ?>-->
+				<?= $this->Html->link(__('View'), ['controller' => 'Needs', 'action' => 'view', $needs['id']]) ?>
+                <!--<?//= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs->id]) ?>-->
+				<?= $this->Html->link(__('Edit'), ['controller' => 'Needs', 'action' => 'edit', $needs['id']]) ?>
+                <!--<?//= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $needs->id)]) ?>-->
+				<?= $this->Form->postLink(__('Delete'), ['controller' => 'Needs', 'action' => 'delete', $needs['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $needs['id'])]) ?>
             </td>
         </tr>
 
