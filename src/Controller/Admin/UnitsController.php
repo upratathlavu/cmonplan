@@ -51,7 +51,7 @@ class UnitsController extends AppController
         
         $stmt = $conn->execute(
 			// PREPISAT S POUZITIM NAME NAMIESTO ID        
-			'select p.id as id, p.name as name, p.description as description, p.product_category_id as product_category_id, p.unit_id as unit_id, p.creation_date as creation_date 
+			'select p.id as p_id, p.name as p_name, p.description as p_description, p.product_category_id as p_product_category_id, p.unit_id as p_unit_id, p.creation_date as p_creation_date 
 			from products as p
 			join units as u on p.unit_id = u.id
 			where u.id = ?', 
