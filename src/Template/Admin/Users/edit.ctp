@@ -3,8 +3,10 @@
     <ul class="side-nav">
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
+                //['action' => 'delete', $user->id],
+                ['action' => 'delete', $user['id']],
+                //['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user['id'])]
             )
         ?></li>
 		<hr>
@@ -34,7 +36,8 @@
     </ul>
 </div>
 <div class="users form large-10 medium-9 columns">
-    <?= $this->Form->create($user); ?>
+    <!--<?//= $this->Form->create($user); ?>-->
+    <?= $this->Form->create(); ?>
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
         <?php
