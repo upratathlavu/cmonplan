@@ -42,17 +42,17 @@ class RolesController extends AppController
         
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select r.name r_name, r.description r_description, r.id r_id, r.creation_date r_creation_date  
-			from roles as r 
-			join users u on r.id = u.role_id
-			where r.id = ?', 
+			'select *
+			from roles
+			where id = ?', 
 			[$id], ['integer']);
         $role = $stmt->fetch('assoc');
         $this->set('role', $role); 
         
 		$stmt = $conn->execute(
-			'select u.id u_id, u.username u_username, u.role_id u_role_id, u.creation_date u_creation_date from users u
-			join roles r on u.role_id = r.id 
+			'select u.id as u_id, u.username as u_username, u.role_id as u_role_id, u.creation_date as u_creation_date 
+			from users as u
+			join roles as r on u.role_id = r.id 
 			where r.id = ?', 
 			[$id], ['integer']);
         $users = $stmt->fetchAll('assoc');        

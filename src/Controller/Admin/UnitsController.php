@@ -49,9 +49,9 @@ class UnitsController extends AppController
         $unit = $stmt->fetch('assoc');
         $this->set('unit', $unit);        
         
-        $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select p.id as id, p.name as name, p.description as description, p.product_category_id as product_category_id, p.unit_id as unit_id, p.creation_date as creation_date from products as p
+			'select p.id as id, p.name as name, p.description as description, p.product_category_id as product_category_id, p.unit_id as unit_id, p.creation_date as creation_date 
+			from products as p
 			join units as u on p.unit_id = u.id
 			where u.id = ?', 
 			[$id], ['integer']);
