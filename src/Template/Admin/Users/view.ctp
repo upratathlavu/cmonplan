@@ -4,8 +4,10 @@
 		<hr>
         <li><?= $this->Html->link(__('Home'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>                   
         <hr>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+        <!--<li><?//= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>-->
+        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user['id']]) ?> </li>
+        <!--<li><?//= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>-->
+        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $user['id'])]) ?> </li>
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
@@ -31,17 +33,19 @@
     </ul>
 </div>
 <div class="users view large-10 medium-9 columns">
-    <h2><?= h($user->id) ?></h2>
+    <!--<h2><?//= h($user->id) ?></h2>-->
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Username') ?></h6>
-            <p><?= h($user->username) ?></p>
+            <!--<p><?//= h($user->username) ?></p>-->
+            <p><?= h($user['username']) ?></p>
             <h6 class="subheader"><?= __('Role') ?></h6>
-            <p><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></p>
+            <!--<p><?//= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></p>-->
+            <p><?= $this->Html->link($user['r_name'], ['controller' => 'Roles', 'action' => 'view', $user['r_id']]) : '' ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
-            <p><?= $this->Number->format($user->id) ?></p>
+            <p><?= $this->Number->format($user['u_id']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>

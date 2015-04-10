@@ -36,12 +36,31 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-		// prerobit
-        $user = $this->Users->get($id, [
-            'contain' => ['Roles', 'Needs']
-        ]);
-        $this->set('user', $user);
-        $this->set('_serialize', ['user']);
+		//// prerobit
+        //$user = $this->Users->get($id, [
+        //    'contain' => ['Roles', 'Needs']
+        //]);
+        //$this->set('user', $user);
+        //$this->set('_serialize', ['user']);
+        
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select * from users
+			where u.id = ?', 
+			[$id], ['integer']);
+        $user = $stmt->fetch('assoc');
+        $this->set('user', $user);     
+        
+        $conn = ConnectionManager::get('default');
+        $stmt = $conn->execute(
+			'select n.id as u_id, n.user_id as user_id, n.product_id as product_id, n.quantity as quantity, r.id as r_id, r.name as r_name 
+			from needs as n
+			join users as u on n.user_id = u.id
+			join roles as r on u.role_id = r.id
+			where n.id = ?', 
+			[$id], ['integer']);
+        $user = $stmt->fetch('assoc');
+        $this->set('user', $user);               
     }
 
     /**
@@ -51,11 +70,18 @@ class UsersController extends AppController
      */
     public function add()
     {
+		$conn = ConnectionManager::get('default');
+		
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-			// prerobit?
             $user = $this->Users->patchEntity($user, $this->request->data);
-            // prerobit?
+			$stmt = $conn->execute(
+			'insert into users (username, password, role_id) values (?, ?, ?)', 
+			[$user['username'], $user['password'], $user['role_id']], ['string', 'string', 'integer']);
+			$errcode = $stmt->errorCode();
+
+            if ($errcode) {
+            // orig
             if ($this->Users->save($user)) {
                 $this->Flash->success('The user has been saved.');
                 return $this->redirect(['action' => 'index']);
@@ -63,8 +89,15 @@ class UsersController extends AppController
                 $this->Flash->error('The user could not be saved. Please, try again.');
             }
         }
-        // prerobit
-        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
+        $stmt = $conn->execute('select id, name from roles');
+        $tmproles = $stmt->fetchAll('assoc');
+        $roles = array();
+        foreach($tmproles as $tmprole) {
+			$roles += array($tmprole['id'] => $tmprole['name']);
+		}
+        $this->set('roles', $roles);
+        // orig
+        //$roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $this->set(compact('user', 'roles'));
         $this->set('_serialize', ['user']);
     }
