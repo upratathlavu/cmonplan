@@ -62,7 +62,7 @@ class UsersController extends AppController
 			join users as u on n.user_id = u.id
 			where n.id = ?', 
 			[$id], ['integer']);
-        $needs = $stmt->fetch('assoc');
+        $needs = $stmt->fetchAll('assoc');
         $this->set('needs', $needs);               
     }
 
