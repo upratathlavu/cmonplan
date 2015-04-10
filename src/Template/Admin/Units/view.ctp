@@ -5,9 +5,9 @@
         <li><?= $this->Html->link(__('Home'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>               
         <hr>    
         <!--<li><?//= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit->id]) ?> </li>-->
-        <li><?= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit['p_id']]) ?> </li>
+        <li><?= $this->Html->link(__('Edit Unit'), ['action' => 'edit', $unit['id']]) ?> </li>
         <!--<li><?//= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit->id], ['confirm' => __('Are you sure you want to delete # {0}?', $unit->id)]) ?> </li>-->
-        <li><?= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit['p_id']], ['confirm' => __('Are you sure you want to delete # {0}?', $unit['p_id'])]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Unit'), ['action' => 'delete', $unit['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $unit['id'])]) ?> </li>
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
