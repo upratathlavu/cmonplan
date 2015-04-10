@@ -60,7 +60,7 @@ class ProductsController extends AppController
 			from needs as n
 			join products as p on p.id = n.product_id
 			where p.id = ?
-			order by n.id asc', 
+			order by n.id desc', 
 			[$id], ['integer']);
         $needs = $stmt->fetchAll('assoc');
         $this->set('needs', $needs);
