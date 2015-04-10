@@ -3,6 +3,8 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Datasource\ConnectionManager;
+use Cake\Database\Connection;
 
 
 /**
