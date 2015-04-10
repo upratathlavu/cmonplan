@@ -48,7 +48,7 @@ class UsersController extends AppController
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
 			'select * from users
-			where u.id = ?', 
+			where id = ?', 
 			[$id], ['integer']);
         $user = $stmt->fetch('assoc');
         $this->set('user', $user);     
