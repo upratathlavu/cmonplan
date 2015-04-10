@@ -5,9 +5,9 @@
         <li><?= $this->Html->link(__('Home'), ['prefix' => 'admin', 'controller' => 'Admin', 'action' => 'home']) ?></li>               
         <hr>    
         <!--<li><?//= $this->Html->link(__('Edit Role'), ['action' => 'edit', $role->id]) ?> </li>-->
-        <li><?= $this->Html->link(__('Edit Role'), ['action' => 'edit', $role['id']]) ?> </li>
+        <li><?= $this->Html->link(__('Edit Role'), ['action' => 'edit', $role['r_id']]) ?> </li>
         <!--<li><?//= $this->Form->postLink(__('Delete Role'), ['action' => 'delete', $role->id], ['confirm' => __('Are you sure you want to delete # {0}?', $role->id)]) ?> </li>-->
-        <li><?= $this->Form->postLink(__('Delete Role'), ['action' => 'delete', $role['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $role['id'])]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Role'), ['action' => 'delete', $role['r_id']], ['confirm' => __('Are you sure you want to delete # {0}?', $role['r_id'])]) ?> </li>
 		<hr>
         <li><?= $this->Html->link(__('List Needs'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Need'), ['prefix' => 'admin', 'controller' => 'Needs', 'action' => 'add']) ?> </li>
@@ -34,25 +34,25 @@
 </div>
 <div class="roles view large-10 medium-9 columns">
     <!--<h2><?//= h($role->name) ?></h2>-->
-    <h2><?= h($role['name']) ?></h2>
+    <h2><?= h($role['r_name']) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Name') ?></h6>
             <!--<p><?//= h($role->name) ?></p>-->
-            <p><?= h($role['name']) ?></p>
+            <p><?= h($role['r_name']) ?></p>
             <h6 class="subheader"><?= __('Description') ?></h6>
             <!--<p><?= h($role->description) ?></p>-->
-            <p><?= h($role['description']) ?></p>
+            <p><?= h($role['r_description']) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Id') ?></h6>
             <!--<p><?//= $this->Number->format($role->id) ?></p>-->
-            <p><?= $this->Number->format($role['id']) ?></p>
+            <p><?= $this->Number->format($role['r_id']) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Creation Date') ?></h6>
             <!--<p><?//= h($role->creation_date) ?></p>-->
-            <p><?= h($role['creation_date']) ?></p>
+            <p><?= h($role['r_creation_date']) ?></p>
         </div>
     </div>
 </div>

@@ -50,6 +50,7 @@ class RolesController extends AppController
         $this->set('role', $role); 
         
 		$stmt = $conn->execute(
+			// PREPISAT S POUZITIM NAME NAMIESTO ID		
 			'select u.id as u_id, u.username as u_username, u.role_id as u_role_id, u.creation_date as u_creation_date 
 			from users as u
 			join roles as r on u.role_id = r.id 
