@@ -20,6 +20,12 @@ class UnitsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'Units.id' => 'asc'
+			]
+        ];			
         $this->set('units', $this->paginate($this->Units));
         $this->set('_serialize', ['units']);
     }

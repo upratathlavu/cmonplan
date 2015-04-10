@@ -20,6 +20,12 @@ class ProductCategoriesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'ProductCategories.id' => 'asc'
+			]
+        ];		
         $this->set('productCategories', $this->paginate($this->ProductCategories));
         $this->set('_serialize', ['productCategories']);
     }

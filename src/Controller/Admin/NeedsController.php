@@ -21,6 +21,10 @@ class NeedsController extends AppController
     public function index()
     {
         $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'Needs.id' => 'asc'
+			],        
             'contain' => ['Users', 'Products']
         ];
         $this->set('needs', $this->paginate($this->Needs));

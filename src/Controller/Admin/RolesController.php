@@ -20,6 +20,12 @@ class RolesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'Roles.id' => 'asc'
+			]
+        ];			
         $this->set('roles', $this->paginate($this->Roles));
         $this->set('_serialize', ['roles']);
     }

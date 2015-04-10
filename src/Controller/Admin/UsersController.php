@@ -23,6 +23,10 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
+			'limit' => 15,
+			'order' => [
+				'Users.id' => 'asc'
+			]        
             'contain' => ['Roles']
         ];
         $this->set('users', $this->paginate($this->Users));
