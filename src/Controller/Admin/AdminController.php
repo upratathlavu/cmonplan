@@ -2,6 +2,9 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\Database\Connection;
+
 
 class AdminController extends AppController
 {
