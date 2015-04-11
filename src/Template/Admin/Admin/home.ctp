@@ -31,10 +31,16 @@
 <div class="products view large-10 medium-9 columns">
     <div class="row">
         <div class="large-5 columns strings">
+            <h6 class="subheader"><?= __('Roles count') ?></h6>
+            <p><?= $rolescnt['count'] ?></p>        
             <h6 class="subheader"><?= __('Users count') ?></h6>
             <p><?= $userscnt['count'] ?></p>
             <h6 class="subheader"><?= __('Products count') ?></h6>
             <p><?= $productscnt['count'] ?></p>
+            <h6 class="subheader"><?= __('Product categories count') ?></h6>
+            <p><?= $productcategoriescnt['count'] ?></p>
+			<h6 class="subheader"><?= __('Units count') ?></h6>
+            <p><?= $unitscnt['count'] ?></p>       
         </div>
     </div>
 </div>
