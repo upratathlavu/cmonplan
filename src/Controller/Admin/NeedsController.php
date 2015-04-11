@@ -37,7 +37,7 @@ class NeedsController extends AppController
 			join products as p on n.product_id = p.id 
 			group by p.name');
         $stocks_p = $stmt->fetchAll('assoc');
-        $this->set('stocks__p', $stocks_p);         
+        $this->set('stocks_p', $stocks_p);         
         
         $stmt = $conn->execute(
 			'select u.username as u_username, sum(n.quantity) as s_quantity 

@@ -56,7 +56,7 @@
         </tr>
         <?php foreach ($stocks_p as $stock): ?>
         <tr>
-            <td><?= h($stock['p_name']) ?></td>
+            <td><?= h($stock['u_username']) ?></td>
             <td><?= h($stock['s_quantity']) ?></td>
         </tr>
         <?php endforeach; ?>
