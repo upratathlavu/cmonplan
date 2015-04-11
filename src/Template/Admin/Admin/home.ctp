@@ -28,7 +28,7 @@
     </ul>
 </div>
 
-<div class="admin home large-10 medium-9 columns">
+<div class="products view large-10 medium-9 columns">
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Users count') ?></h6>
