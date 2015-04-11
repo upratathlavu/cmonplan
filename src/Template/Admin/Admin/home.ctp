@@ -30,6 +30,7 @@
 
 <div class="products view large-10 medium-9 columns">
     <div class="row">
+    <h4 class="subheader"><?= __('Statistics') ?></h4>    
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Roles count') ?></h6>
             <p><?= $rolescnt['count'] ?></p>        
