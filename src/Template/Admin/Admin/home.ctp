@@ -32,9 +32,9 @@
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Users count') ?></h6>
-            <p><?= $userscnt ?></p>
+            <p><?= $userscnt['cnt'] ?></p>
             <h6 class="subheader"><?= __('Products count') ?></h6>
-            <p><?= $productscnt ?></p>
+            <p><?= $productscnt['cnt'] ?></p>
         </div>
     </div>
 </div>
@@ -50,7 +50,7 @@
         <?php foreach ($stocks as $stock): ?>
         <tr>
             <td><?= h($stock['p_name']) ?></td>
-            <td><?= h($stock['n_quantity']) ?></td>
+            <td><?= h($stock['s_quantity']) ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

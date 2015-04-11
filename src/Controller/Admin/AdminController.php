@@ -12,19 +12,19 @@ class AdminController extends AppController
     {
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select count(*)
+			'select count(*) as cnt
 			from users');
         $userscnt = $stmt->fetch();
         $this->set('userscnt', $userscnt);  
 
         $stmt = $conn->execute(
-			'select count(*)
+			'select count(*) as cnt
 			from products');
         $productscnt = $stmt->fetch();
         $this->set('productscnt', $productscnt);         
         
         $stmt = $conn->execute(
-			'select p.name as p_name, sum(n.quantity) as n_cnt 
+			'select p.name as p_name, sum(n.quantity) as s_quantity 
 			from needs as n 
 			join products as p on n.product_id = p.id 
 			group by p.name');
