@@ -73,7 +73,7 @@
 </div>
 
 <div class="related row">
-    <div class="column large-4">
+    <div class="column large-5">
     <h4 class="subheader"><?= __('Stocks per product') ?></h4>
     <table cellpadding="0" cellspacing="0">
         <tr>
@@ -89,7 +89,7 @@
     </table>
     </div>
 
-    <div class="column large-4">
+    <div class="column large-5">
     <h4 class="subheader"><?= __('Stocks per user') ?></h4>
     <table cellpadding="0" cellspacing="0">
         <tr>
