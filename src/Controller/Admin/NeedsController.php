@@ -89,7 +89,7 @@ class NeedsController extends AppController
         if ($this->request->is('post')) {
             $need = $this->Needs->patchEntity($need, $this->request->data);
 			$stmt = $conn->execute(
-			'insert into needs (user_id, product_id, quantity) values (?, ?, ?)', 
+			'begin; insert into needs (user_id, product_id, quantity) values (?, ?, ?); commit', 
 			[$need['user_id'], $need['product_id'], $need['quantity']], ['integer', 'integer', 'integer']);
 			$errcode = $stmt->errorCode();
 
