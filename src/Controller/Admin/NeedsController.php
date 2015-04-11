@@ -29,6 +29,22 @@ class NeedsController extends AppController
         ];
         $this->set('needs', $this->paginate($this->Needs));
         $this->set('_serialize', ['needs']);
+        
+        $stmt = $conn->execute(
+			'select p.name as p_name, sum(n.quantity) as s_quantity 
+			from needs as n 
+			join products as p on n.product_id = p.id 
+			group by p.name');
+        $stocks_p = $stmt->fetchAll('assoc');
+        $this->set('stocks__p', $stocks_p);         
+        
+        $stmt = $conn->execute(
+			'select u.username as u_username, sum(n.quantity) as s_quantity 
+			from needs as n 
+			join users as u on n.user_id = u.id 
+			group by u.username');
+        $stocks_u = $stmt->fetchAll('assoc');
+        $this->set('stocks_u', $stocks_u);         
     }
 
     /**
