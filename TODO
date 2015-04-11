@@ -1,3 +1,12 @@
+* statistika pre index-y
+* vyhladanie konkretneho zaznamu (?)
+* transakcie
+* pouzivanie viacerych tabuliek (?)
+* ceknut joiny
+* agregacna funkcia
+* group by
+* dokumentacia
+* zobrazovanie jednotky pri mnozstve
 * zoradovanie poloziek podla poradia (zistit, preco po update hodi postrgres zaznam na koniec a nenecha ho na svojom mieste)
 * preskakovanie id, ak vymazem a pridam dalsiu polozku
 * vyriesit prepisovanie aktualnych hodnot, ak v edite nic nevyplnim vo fielde

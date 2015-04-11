@@ -27,3 +27,33 @@
         <li><?= $this->Html->link(__('Logout'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'logout']) ?></li>               
     </ul>
 </div>
+
+<div class="admin home large-10 medium-9 columns">
+    <div class="row">
+        <div class="large-5 columns strings">
+            <h6 class="subheader"><?= __('Users count') ?></h6>
+            <p><?= $userscnt ?></p>
+            <h6 class="subheader"><?= __('Products count') ?></h6>
+            <p><?= $productscnt ?></p>
+        </div>
+    </div>
+</div>
+
+<div class="related row">
+    <div class="column large-9">
+    <h4 class="subheader"><?= __('Stocks per product') ?></h4>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th><?= __('Product Id') ?></th>
+            <th><?= __('Quantity') ?></th>
+        </tr>
+        <?php foreach ($stocks as $stock): ?>
+        <tr>
+            <td><?= h($stock['p_name']) ?></td>
+            <td><?= h($stock['n_quantity']) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    </div>
+</div>
+
