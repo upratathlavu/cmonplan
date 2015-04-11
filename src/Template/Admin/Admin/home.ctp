@@ -32,9 +32,9 @@
     <div class="row">
         <div class="large-5 columns strings">
             <h6 class="subheader"><?= __('Users count') ?></h6>
-            <p><?= $userscnt['cnt'] ?></p>
+            <p><?= $userscnt['count'] ?></p>
             <h6 class="subheader"><?= __('Products count') ?></h6>
-            <p><?= $productscnt['cnt'] ?></p>
+            <p><?= $productscnt['count'] ?></p>
         </div>
     </div>
 </div>

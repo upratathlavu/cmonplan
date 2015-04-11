@@ -12,15 +12,15 @@ class AdminController extends AppController
     {
         $conn = ConnectionManager::get('default');
         $stmt = $conn->execute(
-			'select count(*) as cnt
+			'select count(*)
 			from users');
-        $userscnt = $stmt->fetch();
+        $userscnt = $stmt->fetch('assoc');
         $this->set('userscnt', $userscnt);  
 
         $stmt = $conn->execute(
-			'select count(*) as cnt
+			'select count(*)
 			from products');
-        $productscnt = $stmt->fetch();
+        $productscnt = $stmt->fetch('assoc');
         $this->set('productscnt', $productscnt);         
         
         $stmt = $conn->execute(
