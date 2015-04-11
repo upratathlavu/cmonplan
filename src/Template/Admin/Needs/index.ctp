@@ -36,7 +36,7 @@
             <th><?= __('Product Id') ?></th>
             <th><?= __('Quantity') ?></th>
         </tr>
-        <?php foreach ($stocks_u as $stock): ?>
+        <?php foreach ($stocks_p as $stock): ?>
         <tr>
             <td><?= h($stock['p_name']) ?></td>
             <td><?= h($stock['s_quantity']) ?></td>
@@ -54,7 +54,7 @@
             <th><?= __('User Id') ?></th>
             <th><?= __('Quantity') ?></th>
         </tr>
-        <?php foreach ($stocks_p as $stock): ?>
+        <?php foreach ($stocks_u as $stock): ?>
         <tr>
             <td><?= h($stock['u_username']) ?></td>
             <td><?= h($stock['s_quantity']) ?></td>
