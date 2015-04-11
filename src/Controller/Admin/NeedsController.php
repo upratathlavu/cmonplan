@@ -30,6 +30,7 @@ class NeedsController extends AppController
         $this->set('needs', $this->paginate($this->Needs));
         $this->set('_serialize', ['needs']);
         
+ 		$conn = ConnectionManager::get('default');       
         $stmt = $conn->execute(
 			'select p.name as p_name, sum(n.quantity) as s_quantity 
 			from needs as n 
