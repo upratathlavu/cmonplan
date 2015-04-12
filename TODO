@@ -1,12 +1,12 @@
 * vyhladanie konkretneho zaznamu (?)
-* transakcie
 * pouzivanie viacerych tabuliek (?)
 * ceknut joiny
 * dokumentacia
-* zobrazovanie jednotky pri mnozstve
+* osetrit mazanie naviazanych tabuliek
 * zoradovanie poloziek podla poradia (zistit, preco po update hodi postrgres zaznam na koniec a nenecha ho na svojom mieste)
 * preskakovanie id, ak vymazem a pridam dalsiu polozku
 * vyriesit prepisovanie aktualnych hodnot, ak v edite nic nevyplnim vo fielde
 * naviazat edity na konkretne entity - tak ako je to vo vygenerovanom (aby pri edite boli v poliach aktualne hodnoty, aby pri pridavani
 ciselnej hodnoty pridal aj up down sipky)
 * pridat zobrazovanie mien v asociovanych zoznamoch (needs pre product a pod.)
+* zobrazovanie jednotky pri mnozstve

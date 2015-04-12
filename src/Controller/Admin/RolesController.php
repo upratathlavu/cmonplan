@@ -78,9 +78,11 @@ class RolesController extends AppController
         $role = $this->Roles->newEntity();
         if ($this->request->is('post')) {
             $role = $this->Roles->patchEntity($role, $this->request->data);
+            $conn->begin();
 			$stmt = $conn->execute(
 			'insert into roles (name, description) values (?, ?)', 
 			[$role['name'], $role['description']], ['string', 'string']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -116,9 +118,11 @@ class RolesController extends AppController
 			// orig
             //$role = $this->Roles->patchEntity($role, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update roles set name = coalesce(?, name), description = coalesce(?, description) where id = ?', 
 			[$data['name'], $data['description'], $id], ['string', 'string', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -150,8 +154,10 @@ class RolesController extends AppController
         // orig
         //$role = $this->Roles->get($id);
 		$conn = ConnectionManager::get('default');	
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from roles where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {        

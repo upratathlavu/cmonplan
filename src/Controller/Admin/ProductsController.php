@@ -81,9 +81,11 @@ class ProductsController extends AppController
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->data);
+            $conn->begin();
 			$stmt = $conn->execute(
 			'insert into products (name, description, product_category_id, unit_id) values (?, ?, ?, ?)', 
 			[$product['name'], $product['description'], $product['product_category_id'], $product['unit_id']], ['string', 'string', 'integer', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {        			
@@ -136,9 +138,11 @@ class ProductsController extends AppController
 			// orig
             //$product = $this->Products->patchEntity($product, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update products set name = coalesce(?, name), description = coalesce(?, description), product_category_id = coalesce(?, product_category_id), unit_id = coalesce(?, unit_id) where id = ?', 
 			[$data['name'], $data['description'], $data['product_category_id'], $data['unit_id'], $id], ['string', 'string', 'integer', 'integer', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -186,8 +190,10 @@ class ProductsController extends AppController
         // orig
         //$product = $this->Products->get($id);        
 		$conn = ConnectionManager::get('default');	
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from products where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();         
 		
 		if ($errcode) {

@@ -78,9 +78,11 @@ class UnitsController extends AppController
         $unit = $this->Units->newEntity();
         if ($this->request->is('post')) {
             $unit = $this->Units->patchEntity($unit, $this->request->data);
+            $conn->begin();
 			$stmt = $conn->execute(
 			'insert into units (name, abbreviation) values (?, ?)', 
 			[$unit['name'], $unit['abbreviation']], ['string', 'string']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
@@ -116,9 +118,11 @@ class UnitsController extends AppController
 			// orig
             //$unit = $this->Units->patchEntity($unit, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update units set name = coalesce(?, name), abbreviation = coalesce(?, abbreviation) where id = ?', 
 			[$data['name'], $data['abbreviation'], $id], ['string', 'string', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -151,8 +155,10 @@ class UnitsController extends AppController
         // orig
         //$unit = $this->Units->get($id);
 		$conn = ConnectionManager::get('default');	
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from units where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {        

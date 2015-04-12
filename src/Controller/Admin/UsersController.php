@@ -83,9 +83,11 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $conn->begin();
 			$stmt = $conn->execute(
 			'insert into users (username, password, role_id) values (?, ?, ?)', 
 			[$user['username'], $user['password'], $user['role_id']], ['string', 'string', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
@@ -131,9 +133,11 @@ class UsersController extends AppController
 			// orig
             //$user = $this->Users->patchEntity($user, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update users set username = coalesce(?, username), password = coalesce(?, password), role_id = coalesce(?, role_id) where id = ?', 
 			[$data['username'], $data['password'], $data['role_id'], $id], ['string', 'string', 'integer', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
@@ -175,8 +179,10 @@ class UsersController extends AppController
         // orig
         //$user = $this->Users->get($id);
 		$conn = ConnectionManager::get('default');	
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from users where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {

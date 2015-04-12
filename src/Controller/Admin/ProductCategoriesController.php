@@ -78,9 +78,11 @@ class ProductCategoriesController extends AppController
         $productCategory = $this->ProductCategories->newEntity();
         if ($this->request->is('post')) {
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
+            $conn->begin();
 			$stmt = $conn->execute(
 			'insert into product_categories (name, description) values (?, ?)', 
 			[$productCategory['name'], $productCategory['description']]);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -116,9 +118,11 @@ class ProductCategoriesController extends AppController
 			// orig
             //$productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update product_categories set name = coalesce(?, name), description = coalesce(?, description) where id = ?', 
 			[$data['name'], $data['description'], $id], ['string', 'string', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {            
@@ -149,8 +153,10 @@ class ProductCategoriesController extends AppController
         // orig
         //$productCategory = $this->ProductCategories->get($id);
 		$conn = ConnectionManager::get('default');	
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from product_categories where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {        

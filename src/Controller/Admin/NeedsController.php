@@ -146,9 +146,11 @@ class NeedsController extends AppController
 			// orig
             //$need = $this->Needs->patchEntity($need, $this->request->data);
 			$data = $this->request->data;
+			$conn->begin();
 			$stmt = $conn->execute(
 			'update needs set user_id = coalesce(?, user_id), product_id = coalesce(?, product_id), quantity = coalesce(?, quantity) where id = ?', 
 			[$data['user_id'], $data['product_id'], $data['quantity'], $id], ['integer', 'integer', 'integer', 'integer']);
+			$conn->commit();
 			$errcode = $stmt->errorCode();
 
             if ($errcode) {
@@ -197,9 +199,11 @@ class NeedsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         // orig
         //$need = $this->Needs->get($id);
-		$conn = ConnectionManager::get('default');	
+		$conn = ConnectionManager::get('default');
+		$conn->begin();
 		$stmt = $conn->execute(
 		'delete from needs where id = ?', [$id], ['integer']);
+		$conn->commit();
 		$errcode = $stmt->errorCode();        
         
         if ($errcode) {
